@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Table học trên lớp
+    tr: biểu thị bảng
+    td: biểuthị cột
+    
+** các thuộc tính attribute
+ border: đường viền của bảng (đắtj trong thẻ mở của table)
+ cellpadding: khoảng cách từ viền của cột đến nội dung 
+ cellspacing: khoảng cách từ viền của bảng đến viền của cột
+ colspan: gộp các cột 
+ rowspan: gộp các hànghàng
+    -->
+
+    <body>
+    <table border="1" cellpadding='15' cellspacing= '5' > 
+        <thead>
+            <tr>
+                <th bgcolor="redred">STT</th>
+                <th bgcolor= "yellow">Tên</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td align=" center" bgcolor="90877996" >1</td>
+                <td bgcolor="048323">Nguyễn Trí Thắng</td>
+            </tr>
+            <tr>
+                <td align=" center" bgcolor="90992453">2</td>
+                <td bgcolor="943899">Nguyễn Thị Thanh Hà</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" align="center" bgcolor="99999"> Tổng số thành viên: 2</td>
+            </tr>
+        </tfoot>
+    </table>
+    </body>
+
+    <p> Danh sach ghi no </p>
+
+    <body>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>NAME</th>
+                    <th>AGE</th>
+                    <th>EMAIL</th>
+                    <th>STATUS</th>
+                    <th colspan="3">ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Nguyễn Trí Thắng</td>
+                    <td>19</td>
+                    <td>trithang2006vn@gmail.com</td>
+                    <td>Hoạt động</td>
+                    <td>Sửa</td>
+                    <td>Xóa</td>
+                    <td rowspan = 3> Xóa Tất Cả </td>
+                </tr>
+                    <td>2</td>
+                    <td>Nguyễn Thị Thanh Hà</td>
+                    <td>18</td>
+                    <td>thanhhaancut@gmail.com</td>
+                    <td>Hoạt động</td>
+                    <td>Sửa</td>
+                    <td>Xóa</td>
+                </tr>
+                    <td>3</td>
+                    <td>Nguyễn Hà Thắng</td>
+                    <td>100</td>
+                    <td>hathhangvn@gmail.com</td>
+                    <td>Hoạt động</td>
+                    <td>Sửa</td>
+                    <td>Xóa</td>
+                </tr>
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+        
+    </body>
+
+
+
+
+</body>
+
+</html>

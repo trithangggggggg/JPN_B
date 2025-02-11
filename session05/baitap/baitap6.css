@@ -1,0 +1,19 @@
+.text1{
+    background-color: rgb(208, 221, 221);
+    color: red;
+}
+.text2{
+    border: 4px solid green;
+    text-align: center;
+}
+.text3{
+    background-color: rgb(201, 212, 221);
+}
+.text4{
+    background-color: white;
+    border-left: 4px solid green;
+}
+.text5{
+    background-color: rgb(29, 176, 29);
+    color: white;
+}

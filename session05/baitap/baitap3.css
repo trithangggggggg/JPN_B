@@ -1,0 +1,18 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.h1{
+    text-align: center;
+}
+.tr{
+    background-color: blue;
+    color: white;
+}
+.white{
+    background-color: white;
+}
+.background {
+    background-color: rgb(236, 233, 227);
+}
+

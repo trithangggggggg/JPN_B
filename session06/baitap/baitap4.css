@@ -1,0 +1,30 @@
+.head{
+    background-color: rgb(39, 159, 39);
+    color: white;
+    text-align: center;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+    border-right: none;
+}
+.category{
+    background-color: rgb(235, 235, 235);
+    padding-bottom: 400px;
+}
+.img1{
+    width: 250px;
+    height: 150px;
+}
+.img2{
+    width: 250px;
+    height: 150px;
+}
+.foot{
+    text-align: center;
+    color: white;
+    background-color: black;
+}
+/* .bv{
+    border bottom:10px solid gray;
+} */

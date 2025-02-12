@@ -1,0 +1,22 @@
+.div1{
+    background-color: rgb(188, 189, 189);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 220px
+}
+.table{
+    border-radius: 5px;
+    background-color: white;
+    width: 100;
+    height: 120;
+    margin: auto;
+}
+.blue{
+    text-align: center;
+    height: 20PX;
+    width: 170px;
+    background-color: rgb(26, 111, 246);
+    color: white;
+}

@@ -1,0 +1,18 @@
+.divalign{
+    text-align: center;
+}
+.blue{
+    background-color: rgb(44, 44, 247);
+    color: white;
+}
+.home{
+    text-align: center;
+    background-color: white;
+}
+.table{
+    margin: auto;
+    width: 50%;
+}
+.foot{
+    background-color: rgb(230, 230, 230);
+}

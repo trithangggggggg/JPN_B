@@ -1,0 +1,20 @@
+.table{
+    border-radius: 10px ;
+    width: 750px;
+    border-color: rgb(126, 125, 125);
+    
+}
+.line{
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.ice{
+    position: relative;
+    left: 490px;
+}
+.blue{
+    background-color: rgb(117, 161, 254);
+}
+.pink{
+    color: rgb(240, 69, 97);
+}

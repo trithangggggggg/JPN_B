@@ -1,0 +1,16 @@
+.img{
+    width: 400px;
+    height: 460px;
+}
+.textandimg{
+    width: 380px;
+}
+.h3{
+    color:white;
+    position: absolute ; bottom: 350px; left: 40px; 
+    width: 380px;
+    font-size: 1.5em;
+}
+.vien{
+     opacity:0.2;
+}

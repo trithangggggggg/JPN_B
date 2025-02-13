@@ -3,6 +3,9 @@
     color: white;
     text-align: center;
 }
+.vien{ 
+    opacity:0.2;
+}
 table{
     border-collapse: collapse;
     width: 100%;

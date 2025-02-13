@@ -1,0 +1,61 @@
+.head {
+    display: block;
+    width: 300px;
+    background-color: red;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+}
+
+.hot {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    position: relative;
+    left: 25px;
+}
+
+.hot_real {
+    position: relative;
+    left: 110px;
+    bottom: 10px;
+
+}
+
+.text1 {
+    font-family: Arial, Helvetica, sans-serif;
+    opacity: 0.7;
+}
+
+.text2 {
+    color: orange;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.body {
+    display: block;
+
+}
+.vien{
+    opacity: 0.5;
+}
+table {
+    border: black;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 10px rgb(82, 82, 82);
+}
+.btn_dk{
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: rgb(216, 55, 55);
+    color: white;
+}
+.btn_ct{
+    width: 100px;
+    height: 25px;
+    border-radius: 20px;
+    background-color: white;
+    color: rgb(235, 4, 4);
+    border-color: rgb(245, 16, 16);
+}

@@ -1,0 +1,34 @@
+body {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    background-color: black;
+    margin-left: 27%;
+    margin-top: 15%;
+}
+
+.search_input {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 30px;
+    padding: 5px 15px;
+    width: 500px;
+}
+
+.magnifying {
+    font-size: 20px;
+    color: rgb(114, 107, 107);
+}
+
+.box_search {
+    border: none;
+    position: relative;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.mic-cam {
+    position: relative;
+    left: 210px;
+}

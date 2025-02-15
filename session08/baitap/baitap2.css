@@ -1,0 +1,30 @@
+table{
+    background-color: rgb(127, 4, 127);
+    color: white;
+}
+.div1{
+    position: relative;
+    left: 10px;
+}
+.div2{
+    position: relative;
+    left: 25px;
+}
+.inline{
+    display: inline-block;
+}
+button{
+    background-color: white;
+    width: 150px;
+    height: 35px;
+    margin-left: 5px;
+}
+.center{
+    background-color: rgb(127, 4, 127);
+    border-radius: 3px
+}
+textarea{
+   margin-left: 10px;
+   margin-right: 10px;
+   border-radius: 3px
+}

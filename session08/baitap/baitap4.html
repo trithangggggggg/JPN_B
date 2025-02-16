@@ -5,33 +5,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
         h3 {
             display: inline;
         }
-        table{
-            width: 100%;
-        }
-        img{
-            width: 100px;
-            height: auto;
-        }
-        /* td{
-            width: 150px;
-        } */
+
         hr {
             border: 1.5px solid orangered;
             width: 23%;
             margin-left: 0;
         }
-        .hv{
-            width: 40px;
-            height: 40px;
+
+        .hinhthoi1 {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            transform: rotate(45deg);
+            top: 70px;
+            left: 30px;
+            background-color: rgb(243, 242, 242);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hinhthoi2 {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            transform: rotate(45deg);
+            top: 70px;
+            left: 330px;
+            background-color: rgb(243, 242, 242);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hinhthoi3 {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            transform: rotate(45deg);
+            top: 230px;
+            left: 30px;
+            background-color: rgb(243, 242, 242);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hinhthoi4 {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            transform: rotate(45deg);
+            top: 230px;
+            left: 330px;
+            background-color: rgb(243, 242, 242);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .rotate {
+            font-size: 20px;
+            color: orangered;
+            position: absolute;
             transform: rotate(-45deg);
         }
-        .tr2{
-            width: 60px;
-            height: 60px;
+
+        .block {
+            display: inline-block;
+            width: 200px;
+            margin-left: 100px;
+            margin-right: 0;
+        }
+
+        /* .inline{
+            display: inline-block;
+        } */
+        p {
+            opacity: 0.6;
         }
     </style>
 </head>
@@ -39,31 +92,59 @@
 <body>
     <h3> Erat lacinia </h3>
     <hr>
-    <table  border="1" cellpadding="2" cellspacing="0">
+    <table >
         <tr>
             <td>
-
-
-                <table class="table1" border="1" cellspacing="0">
-                    <tr >
-                        <td class="hv tr2" rowspan="2"><img src="" alt=""></td>
-                        <td>2</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                    </tr>
-                </table>
-            
-            
-            
-            
-            
+                <div>
+                    <div class="hinhthoi1">
+                        <i class="rotate"><i class="fa-regular fa-gem"></i></i>
+                    </div>
+                    <div class="block">
+                        <br>
+                        <b>Portitor ullamcorper</b>
+                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis
+                            ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                    </div>
+                </div>
             </td>
-            <td></td>
+            <td>
+                <div>
+                    <div class="hinhthoi2">
+                        <i class="rotate"><i class="fa-brands fa-telegram"></i></i>
+                    </div>
+                    <div class="block">
+                        <br>
+                        <b>Quam lorem ipsum</b>
+                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                    </div>
+                </div>
+            </td>
         </tr>
         <tr>
-            <td></td>
-            <td></td>
+            <td>
+                <div>
+                    <div class="hinhthoi3">
+                        <i class="rotate"><i class="fa-solid fa-rocket"></i></i>
+                    </div>
+                    <div class="block">
+                        <br>
+                        <b>Sapien veroeros</b>
+                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <div class="hinhthoi4">
+                        <i class="rotate"><i class="fa-solid fa-signal"></i></i>
+                    </div>
+                    <div class="block">
+                        <br>
+                        <b>Sed magna finibus</b>
+                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                    </div>
+                </div>
+            </td>
         </tr>
     </table>
 </body>

@@ -1,0 +1,33 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.father{
+    display: flex;
+    gap: 10px;
+}
+.item1{
+    background-color: rgb(93, 8, 93);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    border-radius: 4px;
+}
+.mother{
+    display: flex;
+    justify-content: space-between;
+}
+.item2{
+    background-color: rgb(93, 8, 93);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 159px;
+    height: 50px;
+    border-radius: 4px;
+}

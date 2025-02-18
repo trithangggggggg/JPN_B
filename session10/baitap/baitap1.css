@@ -1,0 +1,37 @@
+.container {
+    background-color: rgb(161, 159, 159);
+    display: flex;
+}
+h3{
+    position: relative;
+    left: 30px;
+}
+.sportnews {
+    font-family: "Grechen Fuemen", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.opacity {
+    opacity: 0.6;
+}
+.father{
+    position: relative;
+    left: 150px;
+    top: 20px;
+}
+    
+
+
+button {
+    background-color: gray;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    position: relative;
+    left: 300px;
+    top: 15px;
+    width: 100px;
+    height: 30px;
+}

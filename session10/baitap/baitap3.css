@@ -9,7 +9,8 @@
 .theboxing{
     width: 400px;
     height: 500px;
-    left: 10px;
+    position: relative;
+    left: 20px;
     top: 10px;
     border-radius: 5px;
 }

@@ -1,0 +1,64 @@
+.container{
+    width: 650px;
+    height: 450px;
+    background-color: #f9fafc;
+}
+img{
+    width: 630px;
+    height: 400px;
+}
+.text{
+    color: rgb(255, 255, 255);
+    width: 600px;
+    position: absolute;
+    top: 190px;
+    left: 30px;
+}
+.btn1{
+    position:absolute;
+    top: 30px;
+    left: 50px;
+    background-color: #2d4762;
+    color: white;
+    border-color: white;
+    width: 70px;
+    height: 25px;
+    border-radius: 4px;
+}
+.footer{
+    position: relative;
+    left: 400px;
+}
+.radius1{
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: none;
+}
+.radius1:hover{
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+}
+
+.radius2{
+    border-radius: 50%;
+    background-color: #f9fafc;
+    border: none;
+    color: black;
+}
+.radius2:hover{
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+}
+
+.btn2{
+    background-color: white;
+    color: black;
+}
+.btn2:hover{
+    opacity: 0.4;
+    background-color: black;
+    color: white;
+}

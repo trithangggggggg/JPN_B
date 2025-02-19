@@ -1,0 +1,252 @@
+.grandfather {
+    display: flex;
+    background-color: #eaeaea;
+    flex-direction: row;
+    gap: 35px;
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.grandfather .father {
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+}
+
+
+
+.rikkei {
+    width: 250px;
+    height: 400px;
+    min-width: 250px;
+    min-height: 400px;
+    background-color: #333333;
+    color: white;
+    position: relative;
+    left: 20px;
+}
+
+.rikkei h1 {
+    position: relative;
+    left: 60px;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.body .text {
+    background-color: #ffffff;
+    width: 900px;
+    position: relative;
+    top: 30px;
+    border-radius: 10px;
+}
+
+.body .text h2 {
+    position: relative;
+    left: 20px;
+}
+
+.body .text p {
+    position: relative;
+    left: 20px;
+}
+
+.contact {
+    width: 250px;
+    height: 400px;
+    /* min-width: 250px;
+    min-height: 400px; */
+    background-color: #333333;
+    color: white;
+    font-size: 20px;
+    position: relative;
+    bottom: 20px;
+}
+
+.contact p {
+    position: relative;
+    left: 20px;
+    top: 10px;
+}
+
+
+/* ----------tablet-------------- */
+
+
+@media screen and (max-width:1200px) {
+
+    .grandfather {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .father {
+        display: flex;
+        background-color: #eaeaea;
+        flex-direction: row;
+        gap: 35px;
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .rikkei {
+        width: 250px;
+        height: 400px;
+        min-width: 250px;
+        min-height: 400px;
+        background-color: #333333;
+        color: white;
+        position: relative;
+        left: 20px;
+    }
+
+    .rikkei h1 {
+        position: relative;
+        left: 60px;
+    }
+
+    .body {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .body .text {
+        background-color: #ffffff;
+        width: 250%;
+        position: relative;
+        top: 30px;
+        border-radius: 10px;
+    }
+
+    .body .text h2 {
+        position: relative;
+        left: 20px;
+    }
+
+    .body .text p {
+        position: relative;
+        left: 20px;
+    }
+
+    .mother .contact {
+        width: 250px;
+        height: 90px;
+        min-width: 250px;
+        background-color: #333333;
+        color: white;
+        font-size: 20px;
+        position: relative;
+        left: 20px;
+    }
+
+
+    .contact p {
+        position: relative;
+        left: 20px;
+        top: 30px;
+    }
+
+}
+/* -------------------mobile-------------- */
+
+@media screen  and (max-width: 768px){
+    
+    .grandfather{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .grandfather .father{
+        display: flex;
+        flex-direction: column;
+    }
+    .rikkei{
+        width: 750px;
+        height: 50px;
+        min-width: 750px;
+        min-height: 50px;
+        background-color: black;
+        color: white;
+        position: relative;
+        left: 1px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .body {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .body .text {
+        background-color: #ffffff;
+        width: 250%;
+        position: relative;
+        top: 1px;
+        border-radius: 10px;
+    }
+
+    .body .text h2 {
+        position: relative;
+        left: 20px;
+    }
+
+    .body .text p {
+        position: relative;
+        left: 20px;
+    }
+
+    .mother .contact {
+        width: 750px;
+        height: 60px;
+        min-width: 750px;
+        min-height: 60px;
+        background-color: black;
+        color: white;
+        font-size: 20px;
+        position: relative;
+        left: 0px;
+    }
+
+
+    .contact p {
+        position: relative;
+        display: flex;
+        justify-content:center ;
+        align-items: center;
+    }
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,261 @@
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* header */
+.container .header{
+    width: 100%;
+    height: 200px;
+    background-color: #a60162;
+}
+
+/* body 1 */
+.container .body1 {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    height: 200px;
+}
+.container .body1 .father1{
+    display: flex;
+    flex-direction: row;
+}
+.container .body1 .father2{
+    display: flex;
+    flex-direction: row;
+}
+.container .body1 .son1{
+    width: 25%;
+    height: 200px;
+    background-color: #db317f
+}
+.container .body1 .son2{
+    width: 25%;
+    height: 200px;
+    background-color: #db317f
+}
+.container .body1 .son3{
+    width: 25%;
+    height: 200px;
+    background-color: #db317f
+}
+.container .body1 .son4{
+    width: 25%;
+    height: 200px;
+    background-color: #db317f
+}
+
+
+/* body 2 */
+
+.container .body2 {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    height: 200px;
+} 
+.container .body2 .son1{
+    width: 49.3%;
+    height: 200px;
+    background-color: #de5d9e;
+}
+.container .body2 .son2{
+    width: 49.3%;
+    height: 200px;
+    background-color: #de5d9e;
+}
+
+/* footer */
+.container .footer{
+    width: 100%;
+    height: 150px;
+    background-color: #ed7bb8;
+}
+
+
+
+/* ---------------------tablet---------------- */
+@media screen and (max-width: 1200px) {
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* header */
+
+
+    .container .header {
+        width: 100%;
+        height: 200px;
+        background-color: #a60162;
+    }
+    /* body 1 */
+
+    .container .body1 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        width: 100%;
+        height: auto;
+    }
+
+    .container .body1 .son1 {
+        width: 48.5%;
+        height: 200px;
+        background-color: #db317f
+    }
+
+    .container .body1 .son2 {
+        width: 48.5%;
+        height: 200px;
+        background-color: #db317f
+    }
+
+    .container .body1 .son3 {
+        width: 48.5%;
+        height: 200px;
+        background-color: #db317f
+    }
+
+    .container .body1 .son4 {
+        width: 48.5%;
+        height: 200px;
+        background-color: #db317f
+    }
+
+    /* body 2 */
+
+    .container .body2 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        width: 100%;
+        height: auto;
+    }
+
+    .container .body2 .son1 {
+        width: 100%;
+        height: 200px;
+        background-color: #de5d9e;
+    }
+
+    .container .body2 .son2 {
+        width: 100%;
+        height: 200px;
+        background-color: #de5d9e;
+    }
+
+    /* footer */
+    .container .footer {
+        width: 100%;
+        height: 250px;
+        background-color: #ed7bb8;
+    }
+}
+
+
+
+/* --------------------mobile------------------ */
+
+@media screen and (max-width: 768px) {
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* header */
+    .container .header {
+        width: 100%;
+        height: 200px;
+        background-color: #a60162;
+    }
+
+    /* body 1 */
+    .container .body1 {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+    }
+
+    .container .body1 .father1 {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .container .body1 .father2 {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .container .body1 .son1 {
+        width: 100%;
+        height: 200px;
+        background-color: #db317f
+    }
+
+    .container .body1 .son2 {
+        width: 100%;
+        height: 200px;
+        background-color: #db317f
+    }
+
+    .container .body1 .son3 {
+        width: 100%;
+        height: 200px;
+        background-color: #db317f
+    }
+
+    .container .body1 .son4 {
+        width: 100%;
+        height: 200px;
+        background-color: #db317f
+    }
+
+
+    /* body 2 */
+
+    .container .body2 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 20px;
+        width: 100%;
+        height: 200px;
+    }
+
+    .container .body2 .son1 {
+        width: 100%;
+        height: 200px;
+        background-color: #de5d9e;
+    }
+
+    .container .body2 .son2 {
+        width: 100%;
+        height: 200px;
+        background-color: #de5d9e;
+    }
+
+    /* footer */
+    .container .footer {
+        width: 100%;
+        height: 150px;
+        background-color: #ed7bb8;
+    }
+}

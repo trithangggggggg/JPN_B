@@ -1,0 +1,148 @@
+/* -------------mobile-------------------- */
+
+.father {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* header */
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    height: auto;
+}
+
+.header .header1 {
+    width: 100%;
+    height: 100px;
+    background-color: #ffa437;
+}
+
+.header .header2 {
+    width: 100%;
+    height: 100px;
+    background-color: #ffa437;
+}
+
+/* body1 */
+
+.body1 {
+    width: 100%;
+    height: 150px;
+    background-color: #daec00;
+}
+
+/* body2 */
+.body2 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.body2 .son1 {
+    width: 100%;
+    height: 150px;
+    background-color: #4a88cf;
+}
+
+
+/* footer */
+.footer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer .son2 {
+    width: 100%;
+    height: 150px;
+    background-color: #e3e3e3;
+}
+
+/* -----------------------tablet---------------- */
+@media screen and (min-width:768px) {
+
+    .father {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* header */
+    .header {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        height: 210px;
+    }
+
+    .header .header1 {
+        width: 100%;
+        height: 100px;
+        background-color: #ffa437;
+    }
+
+    .header .header2 {
+        width: 100%;
+        height: 100px;
+        background-color: #ffa437;
+    }
+
+    /* body1 */
+
+    .body1 {
+        width: 100%;
+        height: 250px;
+        background-color: #daec00;
+    }
+
+    /* body2 */
+
+    .body2 {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .body2 .son1 {
+        width: 100%;
+        height: 100px;
+        background-color: #4a88cf;
+    }
+
+    /* footer */
+    .footer {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .footer .son2 {
+        width: 49%;
+        height: 100px;
+        background-color: #e3e3e3;
+    }
+
+/* -----------------------desktop--------------- */
+
+@media screen and (min-width:1200px) {
+    
+}
+
+
+
+
+}

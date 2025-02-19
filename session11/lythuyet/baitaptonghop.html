@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header {
+            height: 50px;
+            background-color: tomato;
+            line-height: 50px;
+        }
+
+        .header input {
+            width: 70%;
+            position: relative;
+            left: 30px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .header button {
+            width: 20%;
+            position: relative;
+            left: 100px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            background-color: aqua;
+        }
+
+        @media screen and (max-width:768px) {
+            .header {
+                height: 70px;
+                background-color: tomato;
+                line-height: 200px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .header input {
+                width: 500px;
+                position: relative;
+                top: 10px;
+                left: 20px;
+                border: none;
+                border-radius: 5px;
+                color: white;
+            }
+
+            .header button {
+                width: 500px;
+                position: relative;
+                top: 18px;
+                left: 20px;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                background-color: aqua;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <input type="text">
+        <button>tim kiem</button>
+    </div>
+</body>
+
+</html>

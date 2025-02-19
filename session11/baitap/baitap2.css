@@ -1,0 +1,124 @@
+.container{
+    background-color: whitesmoke;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    flex-direction: column;
+    gap: 20px;
+}
+.container .header{
+    width: 90%;
+    height: 50px;
+    background-color: #7cbabe;
+}
+.container .body{
+    width: 90%;
+    height: 150px;
+    display: flex;
+    gap: 20px;
+}
+.container .body .body1{
+    width: 50%;
+    height: 150px;
+    background-color: #eb5c4a;
+}
+.container .body .body2{
+    width: 50%;
+    height: 150px;
+    background-color: #f1a010;
+}
+.container .footer1{
+    width: 90%;
+    height: 50px;
+    background-color: #7cbabe;
+}
+.container .footer2{
+    display: flex;
+    gap: 20px;
+}
+.container .footer2 .son1{
+    width: 29%;
+    height: 150px;
+    background-color: #3f5f7c;
+}
+
+.container .footer2 .son2{
+    width: 29%;
+    height: 150px;
+    background-color: #f17a70;
+}
+
+.container .footer2 .son3{
+    width: 29%;
+    height: 150px;
+    background-color: #f5b343;
+}
+
+/* mobile */
+@media screen and (max-width: 1024px) {
+    .container {
+        background-color: whitesmoke;
+        display: flex;
+        /* justify-content: center;
+    align-items: center; */
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .container .header {
+        width: 90%;
+        height: 50px;
+        background-color: #7cbabe;
+    }
+
+    .container .body {
+        width: 90%;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .container .body .body1 {
+        width: 100%;
+        height: 150px;
+        background-color: #eb5c4a;
+    }
+
+    .container .body .body2 {
+        width: 100%;
+        height: 150px;
+        background-color: #f1a010;
+    }
+
+    .container .footer1 {
+        width: 90%;
+        height: 50px;
+        background-color: #7cbabe;
+    }
+
+    .container .footer2 {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .container .footer2 .son1 {
+        width: 90%;
+        height: 150px;
+        background-color: #3f5f7c;
+    }
+
+    .container .footer2 .son2 {
+        width: 90%;
+        height: 150px;
+        background-color: #f17a70;
+    }
+
+    .container .footer2 .son3 {
+        width: 90%;
+        height: 150px;
+        background-color: #f5b343;
+    }
+}
+

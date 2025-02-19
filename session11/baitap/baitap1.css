@@ -1,0 +1,150 @@
+.container {
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.container .header {
+    width: 90%;
+    height: 60px;
+    background-color: red;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 70px;
+}
+
+.container .content {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.container .content .sb1 {
+    width: 10%;
+    height: 400px;
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    left: 70px;
+}
+
+.container .content .text {
+    width: 68%;
+    height: 400px;
+    background-color: yellow;
+    border-radius: 10px;
+    color: black;
+    position: relative;
+    left: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.container .content .sb2 {
+    width: 10%;
+    height: 400px;
+    background-color: violet;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    left: 70px;
+}
+
+.container .footer {
+    width: 90%;
+    height: 60px;
+    background-color: blue;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 70px;
+}
+
+
+/* mobile */
+@media screen and (max-width: 1023px) {
+    .container {
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .container .header {
+        width: 90%;
+        height: 60px;
+        background-color: red;
+        border-radius: 10px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: 70px;
+    }
+
+    .container .content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .container .content .sb1 {
+        width: 90%;
+        height: 60px;
+        background-color: green;
+        color: white;
+        border-radius: 10px;
+        text-align: center;
+        position: relative;
+        left: 70px;
+    }
+
+    .container .content .text {
+        width: 90%;
+        height: 300px;
+        background-color: yellow;
+        border-radius: 10px;
+        color: black;
+        position: relative;
+        text-align: center;
+        left: 70px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .container .content .sb2 {
+        width: 90%;
+        height: 60px;
+        background-color: violet;
+        color: white;
+        border-radius: 10px;
+        text-align: center;
+        position: relative;
+        left: 70px;
+    }
+
+    .container .footer {
+        width: 90%;
+        height: 60px;
+        background-color: blue;
+        border-radius: 10px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: 70px;
+    }
+}

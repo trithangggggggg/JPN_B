@@ -1,0 +1,47 @@
+
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.card-body:hover{
+    background-color: #ffc107;
+}
+
+
+
+
+
+
+.card-body h5{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-body p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn{
+    width: 15rem;
+}
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+.table tr th{
+    background-color: black;
+    color: white;
+    border-width: 1px;
+}
+.header{
+    display: flex;
+    justify-content: center;
+}
+.table tr td{
+    border-width: 1px;
+}

@@ -1,0 +1,19 @@
+.btn{
+    background-color: orangered;
+}
+.btn:hover{
+    background-color: orangered;
+}
+.dropdown-item:hover{
+    background-color: blue;
+    color: white;
+}
+
+
+
+
+
+
+
+
+

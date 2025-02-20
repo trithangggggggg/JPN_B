@@ -1,0 +1,8 @@
+.header{
+    justify-content: center;
+    align-items: center;
+}
+.mb-3 textarea{
+    border: 2px solid #e6e9ec;
+    border-radius: 4px;
+}

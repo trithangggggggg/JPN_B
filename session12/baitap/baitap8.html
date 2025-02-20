@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/js/bootstrap.bundle.js">
+    <link rel="stylesheet" href="./baitap8.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Payment</h2>
+        <div>
+            <input type="radio" name="option"> Credit card <br>
+            <input type="radio" name="option"> Debit card <br>
+            <input type="radio" name="option"> PayPal
+        </div>
+        <div class="row1">
+            <div class="mb-3">
+                <label for="exampleInputNameCard" class="form-label">Name on card </label><br>
+                <input type="card" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">Full name as displayed on card </div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputNumber" class="form-label">Credit card number</label><br>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+        </div>
+        <div class="row2">
+            <div>
+                <label for="expiration">Expiration</label><br>
+                <input type="text">
+            </div>
+            <div>
+                <label for="CVV">CVV</label><br>
+                <input type="text">
+            </div>
+        </div>
+        <hr>
+        <button class="btn btn-primary">Continue to checkout</button><br><br>
+    </div>
+</body>
+
+</html>

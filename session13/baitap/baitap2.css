@@ -1,0 +1,243 @@
+.container {
+    width: 1440;
+    /* height: 812.5326538085938; */
+
+}
+
+.container .header {
+    width: 1286px;
+    height: 41px;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+
+}
+
+.header .title {
+    width: 185px;
+    height: 41px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 34px;
+    position: relative;
+    top: 29px;
+    left: 54px;
+}
+
+
+.header .son1 {
+    width: 48;
+    height: 24;
+    position: relative;
+    top: 38px;
+    left: 305px;
+
+}
+
+.header .son2 {
+    width: 48;
+    height: 24;
+    position: relative;
+    top: 38px;
+    left: 408px;
+}
+
+.header .son3 {
+    width: 49;
+    height: 24;
+    position: relative;
+    top: 38px;
+    left: 525px;
+
+}
+
+.header .son4 {
+    width: 66;
+    height: 24;
+    position: relative;
+    top: 38px;
+    left: 649px;
+}
+
+.header .son5 {
+    width: 28;
+    height: 28;
+    position: relative;
+    top: 36px;
+    left: 830px;
+}
+
+.header .son6 {
+    width: 28;
+    height: 28;
+    position: relative;
+    top: 36px;
+    left: 890px;
+
+}
+
+.header .son7 {
+    width: 28;
+    height: 28;
+    position: relative;
+    top: 36px;
+    left: 930px;
+
+}
+
+.header .son8 {
+    width: 28;
+    height: 28;
+    position: relative;
+    top: 36px;
+    left: 970px;
+
+}
+
+.body img {
+    width: 1440px;
+    height: 800px;
+    position: relative;
+    top: 75px;
+    position: absolute;
+}
+
+.body .father {
+    width: 643px;
+    height: 443px;
+    background: #FFF3E3;
+    position: relative;
+    top: 253px;
+    left: 739px;
+    border-radius: 10px;
+
+}
+
+.body .father .text {
+    width: 561px;
+    height: 344px;
+    position: relative;
+
+
+}
+
+.body .father .text h2 {
+    width: 1230px;
+    height: 24px;
+    font-weight: 600;
+    position: relative;
+    top: 50px;
+    left: 30px;
+}
+
+
+.body .father .text h1 {
+    width: 1230px;
+    height: 24px;
+    font-weight: 700;
+    position: relative;
+    top: 75px;
+    left: 30px;
+}
+
+.body .father .text p {
+    width: 561px;
+    height: 24px;
+    font-weight: 600;
+    position: relative;
+    top: 100px;
+    left: 30px;
+}
+
+button {
+    width: 222px;
+    height: 74px;
+    background: #B88E2F;
+    color: white;
+    position: relative;
+    left: 30px;
+}
+
+
+.footer .text {
+    width: 1440px;
+    height: 76.7114028930664px;
+    position: relative;
+    top: 417px;
+
+}
+
+
+.footer .text h1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.footer .text p {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.footer .father {
+    width: 381px;
+    height: 480px;
+    display: flex;
+    flex-direction: row;
+    
+}
+.footer .father img{
+    width: 381px;
+    height: 400px;
+}
+.footer.father{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+.footer .father .img1{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    top: 500px;
+}
+
+.footer .father .img2{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    top: 500px;
+    left: 150px;
+}
+
+.footer .father .img3{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    top: 500px;
+    left: 290px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

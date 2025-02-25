@@ -479,7 +479,7 @@
 
 @media screen and (max-width:375px){
     .header {
-        width: 1440px;
+        width: 1440px;  
         height: 68px;
         justify-content: space-between;
         padding-top: 16px;

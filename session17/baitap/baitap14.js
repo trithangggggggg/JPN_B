@@ -1,0 +1,10 @@
+let r=prompt("Moi nhap ban kinh hinh tru: ");
+let h=prompt("Moi nhap chieu cao hinh tru: ");
+let sxp= 2 * 3.14 * r * h;
+let stp= sxp + 2 * 3.14 * r * r;
+let v= 3.14 * r * r * h;
+let c= 2 * 3.14 * r;
+alert("Dien tich xung quanh hinh tru la: " + sxp);
+alert("Dien tich toan phan hinh tru la: " + stp);
+alert("The tich hinh tru la: " + v);
+alert("Chu vi hinh tru la: " + c);

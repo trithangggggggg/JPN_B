@@ -12,3 +12,4 @@ function checkNumber(array) {
     }
 }
 checkNumber([1, 2, 4, 6, 5, 2]);
+checkNumber([2, 24,3,32]);

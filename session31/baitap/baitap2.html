@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bandau {
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body id="page" class="bandau">
+    <div class="father">
+        <h1>Toggle Dark/Light Mode</h1>
+        <p>Click the button to toggle dark or light mode for your page</p>
+        <button id="toggle">Toggle dark or light</button>
+    </div>
+
+    <script>
+        function toggleMode() {
+            let body = document.getElementById("page");
+            if (body.style.backgroundColor === "black") {
+                body.style.backgroundColor = "white";
+                body.style.color = "black";
+            } else {
+                body.style.backgroundColor = "black";
+                body.style.color = "white";
+            }
+        }
+        
+        document.getElementById("toggle").addEventListener("click", toggleMode);
+    </script>
+</body>
+</html>

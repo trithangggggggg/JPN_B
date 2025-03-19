@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input, button {
+            display: block;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Dang nhap</h2>
+    <label>Username:</label>
+    <input type="text" id="username">
+
+    <label>Password:</label>
+    <input type="password" id="password">
+
+    <button onclick="dangNhap()">Login</button>
+
+    <script>
+        function dangNhap() {
+            let user = document.getElementById("username").value;
+            let pass = document.getElementById("password").value;
+
+            if (user === "huanrose@gmail.com" && pass === "123456") {
+                console.log("Dang nhap thanh cong");
+            } else {
+                console.log("Dang nhap that bai");
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="title" id="text">This is a text</p>
+        <button class="btn_hide" onclick="hide()">Hide text</button>
+        <button class="btn_show" onclick="show()">Show text</button>
+    </div>
+    <script>
+        function hide(){
+            document.getElementById("text").classList.add("hidden");
+        }
+        function show(){
+            document.getElementById("text").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>

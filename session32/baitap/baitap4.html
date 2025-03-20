@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input class="input" type="text" placeholder="abc@gmail.com">
+    <p class="message"></p>
+    <button class="btn" id="check">Check</button>
+
+    <script>
+        document.getElementById("check").addEventListener("click", function () {
+            let email = document.getElementsByClassName("input")[0].value;
+            let message = document.getElementsByTagName("p")[0];
+
+            if (checkEmail(email)) {
+                message.textContent = "✅ Email hợp lệ";
+                message.style.color = "green";
+            } else {
+                message.textContent = "❌ Email không hợp lệ";
+                message.style.color = "red";
+            }
+        });
+
+        function checkEmail(email) {
+            return email.includes("@") && email.endsWith(".com") || email.endsWith(".vn") ;
+        }
+    </script>
+</body>
+</html>

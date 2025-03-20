@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            display: flex;
+            gap: 30px;
+        }
+
+        .box1 {
+            background-color: white;
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box1.btn1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <button class="btn" id="color">Doi mau nen</button>
+    </div>
+    </div>
+    <script>
+        document.getElementById("color").addEventListener("click", function () {
+            document.querySelector(".box1").style.backgroundColor = getRandomColor();
+        });
+
+        function getRandomColor() {
+            let a = Math.random() * 256;
+            let b = Math.random() * 256;
+            let c = Math.random() * 256;
+            return `rgb(${a}, ${b}, ${c})`;
+        }
+    </script>
+</body>
+
+</html>

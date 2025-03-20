@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="inputText" type="text" placeholder="Nhap ten mon hoc">
+    <button onclick="addLession()">Them mon hoc</button>
+    <ol id="listItem">
+        <li>Toan</li>
+        <li>Ly</li>
+        <li>Hoa</li>
+    </ol>
+    <script>
+        let arrayLession = ["Toan", "Ly", "Hoa"];
+
+        function renderLession() {
+            let stringLession = "";
+            for (let i = 0; i < arrayLession.length; i++) {
+                stringLession += `<li>${arrayLession[i]}</li>`;
+            }
+            let listItem = document.getElementById("listItem");
+            listItem.innerHTML = stringLession;
+        }
+
+        function addLession() {
+            let textInput = document.getElementById("inputText").value.trim();
+            if (textInput === "") {
+                alert("ten mon hoc khong duoc de trong");
+            } else {
+                arrayLession.push(textInput);
+                renderLession();
+                document.getElementById("inputText").value = "";
+            }
+        }
+    </script>
+</body>
+</html>

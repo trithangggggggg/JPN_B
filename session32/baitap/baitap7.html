@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phóng To Ảnh</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .gallery img {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.5);
+        }
+
+        .phongto {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phongto img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Bấm vào ảnh để phóng to</h2>
+    <div class="gallery">
+        <img src="https://i.pinimg.com/736x/c8/15/7d/c8157d5a8bd46096c6dd20d66da6ca68.jpg" onclick="showImage(this)">
+        <img src="https://i.pinimg.com/736x/fd/de/90/fdde908182ed6bf76e0aea977252b258.jpg" onclick="showImage(this)">
+        <img src="https://i.pinimg.com/736x/98/22/d9/9822d918a7be423281468737404c1297.jpg" onclick="showImage(this)">
+    </div>
+
+    <div class="phongto" id="phongto" onclick="hideImage()">
+        <img id="phongtoImage">
+    </div>
+
+    <script>
+        function showImage(img) {
+            let phongto = document.getElementById("phongto");
+            let phongtoImg = document.getElementById("phongtoImage");
+
+            phongto.style.display = "flex";
+            phongtoImg.src = img.src;
+        }
+
+        function hideImage() {
+            document.getElementById("phongto").style.display = "none";
+        }
+    </script>
+</body>
+</html>

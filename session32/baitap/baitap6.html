@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> <!-- Giữ nguyên "Document" -->
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        #text {
+            font-size: 24px;
+        }
+        .btn {
+            font-size: 20px;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        .tang {
+            background-color: green;
+            color: white;
+            width: 50px;
+            height: 50px;
+        }
+        .giam {
+            background-color: red;
+            color: white;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <p id="text">Chữ sẽ thay đổi kích thước khi bấm nút.</p>
+        <button class="btn tang">+</button>
+        <button class="btn giam">-</button>
+    </div>
+
+    <script>
+        let textElement = document.getElementById("text");
+        let fontSize = 30;
+        document.querySelector(".tang").addEventListener("click", function() {
+            if (fontSize < 50) {
+                fontSize += 2;
+                textElement.style.fontSize = fontSize + "px";
+            }
+        });
+
+        document.querySelector(".giam").addEventListener("click", function() {
+            if (fontSize > 10) {
+                fontSize -= 2;
+                textElement.style.fontSize = fontSize + "px";
+            }
+        });
+    </script>
+
+</body>
+</html>

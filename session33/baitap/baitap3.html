@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; 
+            align-items: center; 
+        }
+        select, button {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Lọc sản phẩm theo danh mục</h2>
+    <select id="danhmuc">
+        <option value="">-- Chọn danh mục --</option>
+        <option value="Đồ ăn">Đồ ăn</option>
+        <option value="Nước">Nước</option>
+        <option value="Dụng cụ">Dụng cụ</option>
+    </select>
+    <button onclick="filterSP()">Lọc</button>
+    
+    <ul id="ds">
+        <li sanpham="Đồ ăn"><strong>Đồ ăn:</strong> Rau sạch - <strong>Danh mục:</strong> Đồ ăn</li>
+        <li sanpham="Đồ ăn"><strong>Đồ ăn:</strong> Thịt lợn - <strong>Danh mục:</strong> Đồ ăn</li>
+        <li sanpham="Nước"><strong>Đồ ăn:</strong> Pepsi không calo - <strong>Danh mục:</strong> Nước</li>
+        <li sanpham="Nước"><strong>Đồ ăn:</strong> Cocacola - <strong>Danh mục:</strong> Nước</li>
+        <li sanpham="Dụng cụ"><strong>Đồ ăn:</strong> Cờ lê - <strong>Danh mục:</strong> Dụng cụ</li>
+        <li sanpham="Dụng cụ"><strong>Đồ ăn:</strong> Tuvít - <strong>Danh mục:</strong> Dụng cụ</li>
+    </ul>
+
+    <script>
+        function filterSP() {
+            let chon = document.getElementById("danhmuc").value;
+            let dsSp = document.getElementById("ds").children;
+
+            for (let i = 0; i < dsSp.length; i++) {
+                if (chon === "" || dsSp[i].getAttribute("sanpham") === chon) {
+                    dsSp[i].style.display = "list-item";
+                } else {
+                    dsSp[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

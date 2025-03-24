@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    .password_container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .eye_icon {
+      position: absolute;
+      left: 150px;
+      top: 1px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <label for="password">Mật khẩu:</label>
+  <div class="password_container">
+    <input type="password" id="password">
+    <span class="eye_icon" onclick="showPassword()"><i class="fa-solid fa-eye"></i></span>
+  </div>
+
+  <script>
+    function showPassword() {
+      let passwordInput = document.getElementById("password");
+      let eyeIcon = document.querySelector(".eye_icon i");
+
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+      } else {
+        passwordInput.type = "password";
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+      }
+    }
+  </script>
+
+</body>
+</html>

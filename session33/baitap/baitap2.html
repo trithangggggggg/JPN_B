@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        textarea {
+            width: 200px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea id="check"></textarea>
+    <p class="count">0 ki tu </p>
+    <button class="click">Kiểm tra</button>
+
+    <script>
+        let textarea = document.getElementById("check");
+        let countDisplay = document.getElementsByClassName("count")[0];
+        let checkButton = document.getElementsByClassName("click")[0];
+
+        function updateCount() {
+            let count = textarea.value.length;
+            countDisplay.textContent = `${count} kí tự`;
+        }
+
+        checkButton.addEventListener("click", updateCount);
+
+    </script>
+</body>
+
+</html>

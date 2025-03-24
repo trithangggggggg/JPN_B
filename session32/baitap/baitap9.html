@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 100px;
+            border: 1px solid #000;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="opacity">
+        <progress id="progress" max="100" value="0">Thanh tien trinh</progress>
+        <button onclick="tang()">tang</button>
+        <button onclick="giam()">giam</button>
+    </div>
+    <script>
+        let valueProgress = 0;
+        let opacity = 0;
+        function tang() {
+            valueProgress += 10;
+            if (valueProgress >= 100) {
+                valueProgress = 100;
+            }
+            opacity += 0.1;
+            if (opacity > 1) {
+                opacity = 1;
+            }
+            document.getElementById("progress").value = valueProgress;
+            document.getElementsByClassName("container")[0].style.opacity = opacity
+        }
+        function giam() {
+            valueProgress -= 10;    
+            if (valueProgress <= 0) {
+                valueProgress = 0;
+            }
+            opacity -= 0.1;
+            if (opacity < 0) {
+                opacity = 0;
+            }
+            document.getElementById("progress").value = valueProgress;
+            document.getElementsByClassName("container")[0].style.opacity = opacity
+
+        }
+    </script>
+</body>
+
+</html>

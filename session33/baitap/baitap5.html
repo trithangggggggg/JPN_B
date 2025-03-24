@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sản phẩm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* CSS cho thanh tìm kiếm */
+        .search-container {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .search-container input {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .search-container button {
+            padding: 8px 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        /* CSS cho thông báo không tìm thấy sản phẩm */
+        .no-products {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-style: italic;
+            width: 100%;
+        }
+        
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .product-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            width: calc(33.333% - 20px);
+            box-sizing: border-box;
+        }
+        
+        .product-image {
+            height: 150px;
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-image img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+        
+        .product-info {
+            padding: 10px;
+        }
+        
+        .product-name {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .product-description {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: #e91e63;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Danh sách sản phẩm</h2>
+    
+    <!-- Thanh tìm kiếm -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+        <button id="searchButton">Tìm</button>
+    </div>
+    
+    <!-- danh sach -->
+    <div class="product-list" id="productList"></div>
+
+    <script>
+        //sản phẩm
+        let products = [
+            {
+                id: 1,
+                name: "Laptop Dell XPS 15",
+                price: 35990000,
+                image: "https://i.pinimg.com/736x/29/f3/99/29f399aec2699d49113314f1e96d5063.jpg",
+                description: "Laptop cao cấp với màn hình 15 inch, CPU Intel Core i7 và RAM 16GB."
+            },
+            {
+                id: 2,
+                name: "iPhone 15 Pro Max",
+                price: 32990000,
+                image: "https://i.pinimg.com/736x/75/6f/a8/756fa84842119dcdcb1b10eaeb6122d4.jpg",
+                description: "Điện thoại Flagship của Apple với camera 48MP và chip A17 Pro."
+            },
+            {
+                id: 3,
+                name: "Samsung Galaxy S24 Ultra",
+                price: 28990000,
+                image: "https://i.pinimg.com/736x/4f/31/2d/4f312d2d8b7a69f696564959d541764d.jpg",
+                description: "Điện thoại Android mạnh mẽ với bút S-Pen và camera siêu zoom."
+            },
+            {
+                id: 4,
+                name: "Tai nghe Sony WH-1000XM5",
+                price: 7990000,
+                image: "https://i.pinimg.com/736x/b1/a4/a7/b1a4a7a08ede1778943f292c9d81229a.jpg",
+                description: "Tai nghe chống ồn tốt nhất với thời lượng pin lên đến 30 giờ."
+            },
+            {
+                id: 5,
+                name: "Apple Watch Series 9",
+                price: 11990000,
+                image: "https://i.pinimg.com/736x/eb/94/16/eb94167969b005c753d8c50b9ef9d64d.jpg",
+                description: "Đồng hồ thông minh cao cấp với tính năng đo nhịp tim và hỗ trợ thể thao."
+            },
+            {
+                id: 6,
+                name: "Loa JBL Charge 5",
+                price: 3990000,
+                image: "https://i.pinimg.com/736x/31/c2/8b/31c28b2b92fa567cd76af1ca8fffd719.jpg",
+                description: "Loa Bluetooth chống nước với âm bass mạnh mẽ và pin dài 20h."
+            }
+        ];
+
+        // Lấy phần tử chứa danh sách sản phẩm
+        let productList = document.getElementById('productList');
+        let searchInput = document.getElementById('searchInput');
+        let searchButton = document.getElementById('searchButton');
+
+        // Hàm hiển thị sản phẩm
+        function displayProducts(productsToShow) {
+            productList.innerHTML = '';
+            
+            // Kiểm tra nếu không có sản phẩm nào
+            if (productsToShow.length === 0) {
+                let noProducts = document.createElement('div');
+                noProducts.className = 'no-products';
+                noProducts.textContent = 'Không tìm thấy sản phẩm nào phù hợp.';
+                productList.appendChild(noProducts);
+                return;
+            }
+            
+            // Hiển thị sản phẩm
+            for (let i = 0; i < productsToShow.length; i++) {
+                let product = productsToShow[i];
+                
+                let productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                
+                productCard.innerHTML = 
+                    '<div class="product-image">' +
+                        '<img src="' + product.image + '" alt="' + product.name + '">' +
+                    '</div>' +
+                    '<div class="product-info">' +
+                        '<div class="product-name">' + product.name + '</div>' +
+                        '<div class="product-description">' + product.description + '</div>' +
+                        '<div class="product-price">' + product.price.toLocaleString('vi-VN') + ' VNĐ</div>' +
+                    '</div>';
+                
+                productList.appendChild(productCard);
+            }
+        }
+
+        function searchProducts() {
+            // Lấy giá trị từ ô input tìm kiếm
+            let searchTerm = searchInput.value.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                displayProducts(products);
+                return;
+            }
+            
+            // Lọc sản phẩm 
+            let filteredProducts = [];
+            for (let i = 0; i < products.length; i++) {
+                let product = products[i];
+                if (product.name.toLowerCase().includes(searchTerm) || 
+                    product.description.toLowerCase().includes(searchTerm)) {
+                    filteredProducts.push(product);
+                }
+            }
+            
+            // Hiển thị kết quả tìm kiếm
+            displayProducts(filteredProducts);
+        }
+
+        //sự kiện click
+        searchButton.addEventListener('click', searchProducts);
+        
+        //sự kiện Enter 
+        searchInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                searchProducts();
+            }
+        });
+        
+        // Hiển thị tất cả sản phẩm
+        displayProducts(products);
+    </script>
+</body>
+</html>

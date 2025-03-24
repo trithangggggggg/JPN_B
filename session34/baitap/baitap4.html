@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(234, 232, 232);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            margin: 0;
+        }
+
+        .todo-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 70%;
+            padding: 8px;
+            border: 1px solid rgb(220, 220, 220);
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button.add-btn {
+            width: 25%;
+            padding: 8px;
+            background-color: green;
+            color: rgb(221, 221, 221);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button.add-btn:hover {
+            background-color: green;
+        }
+
+        .todo-list {
+            text-align: left;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            border-bottom: 1px solid white;
+        }
+
+        button.delete-btn {
+            background-color: rgb(194, 71, 71);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        button.delete-btn:hover {
+            background-color: rgb(181, 49, 49);
+        }
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <h2>Todo List</h2>
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="Them viec can lam">
+            <button class="add-btn" onclick="addTask()">Them</button>
+        </div>
+        <div class="todo-list" id="taskList"></div>
+    </div>
+
+    <script>
+        let tasks = JSON.parse(localStorage.getItem("todoTasks")) || [];
+        function renderTasks() {
+            let taskList = document.getElementById("taskList");
+            taskList.innerHTML = "";
+            tasks.forEach((task, index) => {
+                let taskItem = document.createElement("div");
+                taskItem.className = "todo-item";
+                taskItem.innerHTML = `
+                    <span>${task}</span>
+                    <button class="delete-btn" onclick="deleteTask(${index})">Xoa</button>
+                `;
+                taskList.appendChild(taskItem);
+            });
+        }
+
+        function addTask() {
+            let taskInput = document.getElementById("taskInput").value.trim();
+            if (taskInput === "") {
+                alert("Vui long nhap cong viec");
+                return;
+            }
+
+            tasks.push(taskInput);
+            localStorage.setItem("todoTasks", JSON.stringify(tasks));
+            document.getElementById("taskInput").value = "";
+            renderTasks();
+        }
+
+        function deleteTask(index) {
+            if (confirm("Ban co chac muon xoa cong viec nay khong")) {
+                tasks.splice(index, 1);
+                localStorage.setItem("todoTasks", JSON.stringify(tasks));
+                renderTasks();
+            }
+        }
+        renderTasks();
+    </script>
+</body>
+</html>

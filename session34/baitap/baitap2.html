@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            height: auto;
+        }
+
+        .header input,
+        select {
+            width: 19%;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input,
+        select,
+        button {
+            margin: 5px;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 1480px;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #d6d4d4;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Task Management</h2>
+        <div class="header">
+            <input id="content" type="text" placeholder="Content">
+            <input id="date" type="date">
+            <select id="status">
+                <option>Choose status</option>
+                <option>Pending</option>
+                <option>Completed</option>
+            </select>
+            <input id="userName" type="text" placeholder="Username">
+            <button onclick="createTask()">Submit</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Content</th>
+                    <th>Due date</th>
+                    <th>Status</th>
+                    <th>Assigned to</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="taskTable">
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let tasks = [];
+        let editingIndex = -1;
+    
+        function createTask() {
+            let content = document.getElementById("content").value;
+            let date = document.getElementById("date").value;
+            let status = document.getElementById("status").value;
+            let userName = document.getElementById("userName").value;
+    
+            if (content === "" || date === "" || userName === "") {
+                alert("Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
+    
+            if (status === "Choose status") {
+                alert("Vui lòng chọn trạng thái hợp lệ!");
+                return;
+            }
+    
+            // let today = new Date().toISOString().split("T")[0];
+            // if (date < today) {
+            //     alert("Ngày đến hạn không thể là ngày trong quá khứ!");
+            //     return;
+            // }
+    
+            let task = { content, date, status, userName };
+            if (editingIndex !== -1) {
+                tasks[editingIndex] = task;
+                editingIndex = -1;
+            } else {
+                tasks.push(task);
+            }
+            saveTasks();
+            renderTask();
+    
+            document.getElementById("content").value = "";
+            document.getElementById("date").value = "";
+            document.getElementById("status").value = "Choose status";
+            document.getElementById("userName").value = "";
+        }
+    
+        function renderTask() {
+            let table = document.getElementById("taskTable");
+            table.innerHTML = "";
+            for (let i = 0; i < tasks.length; i++) {
+                let task = tasks[i];
+                let row = `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${task.content}</td>
+                    <td>${task.date}</td>
+                    <td>${task.status}</td>
+                    <td>${task.userName}</td>
+                    <td>
+                        <button onclick="editTask(${i})">Sửa</button>
+                        <button onclick="deleteTask(${i})">Xóa</button>
+                    </td>
+                </tr>`;
+                table.innerHTML += row;
+            }
+        }
+    
+        function saveTasks() {
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+    
+        function loadTasks() {
+            let savedTasks = localStorage.getItem("tasks");
+            if (savedTasks) {
+                tasks = JSON.parse(savedTasks);
+            }
+            renderTask();
+        }
+    
+        function editTask(index) {
+            let task = tasks[index];
+            document.getElementById("content").value = task.content;
+            document.getElementById("date").value = task.date;
+            document.getElementById("status").value = task.status;
+            document.getElementById("userName").value = task.userName;
+            editingIndex = index;
+        }
+    
+        function deleteTask(index) {
+            if (confirm("Bạn có chắc muốn xóa nhiệm vụ này không?")) {
+                tasks.splice(index, 1);
+                saveTasks();
+                renderTask();
+            }
+        }
+    
+        loadTasks();
+    </script>
+</body>
+
+</html>

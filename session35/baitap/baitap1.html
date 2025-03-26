@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+        }
+
+        #list {
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            min-height: 50px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        #list:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        button {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>To-do list</h2>
+    <input type="text" id="taskInput" placeholder="Nhập công việc">
+    <button onclick="addTask()">Thêm</button>
+    <div id="list">
+        <!-- <p><button>sua</button><button>xoa</button></p> -->
+    </div>
+    <script>
+        renderTasks();
+
+        function addTask() {
+            let listTask = JSON.parse(localStorage.getItem("listTask")) || [];
+            let id = 0;
+            let name = document.getElementById("taskInput").value.trim();
+            if (name === "") {
+                alert("Vui lòng nhập thông tin");
+                return;
+            }
+            if (listTask.length === 0) {
+                id = 1;
+            } else {
+                id = listTask[listTask.length - 1].id + 1;
+            }
+            let newTask = {
+                id: id,
+                name: name,
+            };
+            listTask.push(newTask);
+            localStorage.setItem("listTask", JSON.stringify(listTask));
+            renderTasks();
+            document.getElementById("taskInput").value = ""; // Xóa input sau khi thêm
+        }
+
+        function renderTasks() {
+            let listTask = JSON.parse(localStorage.getItem("listTask")) || [];
+            let str = "";
+            for (let i = 0; i < listTask.length; i++) {
+                str += `<p>${listTask[i].name}<button onclick="updateTask(${listTask[i].id})">Sửa</button>
+                                            <button onclick="deleteTask(${listTask[i].id})">Xóa</button></p>`;
+            }
+            document.getElementById("list").innerHTML = str;
+        }
+
+        function updateTask(id) {
+            let listTask = JSON.parse(localStorage.getItem("listTask")) || [];
+            let index = listTask.findIndex((item) => item.id === id);
+            if (index !== -1) {
+                let update = prompt("Chỉnh sửa công việc", listTask[index].name);
+                if (update !== null) { // Kiểm tra nếu người dùng không hủy prompt
+                    listTask[index].name = update.trim();
+                    localStorage.setItem("listTask", JSON.stringify(listTask));
+                    renderTasks();
+                }
+            }
+        }
+
+        function deleteTask(id) {
+            let listTask = JSON.parse(localStorage.getItem("listTask")) || [];
+            for (let i = 0; i < listTask.length; i++) {
+                if (listTask[i].id === id) {
+                    let confirmDelete = confirm("Bạn có chắc muốn xóa không?");
+                    if (confirmDelete) {
+                        listTask.splice(i, 1);
+                        localStorage.setItem("listTask", JSON.stringify(listTask));
+                        renderTasks();
+                    }
+                    return;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

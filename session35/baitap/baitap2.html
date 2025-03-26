@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark Manager</title>
+    <style>
+        body {
+            background: #2e1b4b;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            margin: 50px auto;
+            width: 300px;
+        }
+
+        .bookmark {
+            background: black;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .modal {
+            background: white;
+            color: black;
+            padding: 20px;
+            width: 450px;
+            margin: auto;
+            display: none;
+            position: absolute;
+            top: 30%;
+            left: 33%;
+        }
+
+        h3 {
+            background-color: violet;
+        }
+
+        .add {
+            width: 200px;
+            height: 50px;
+            border-radius: 5%;
+        }
+
+        label {
+            color: violet;
+        }
+
+        input {
+            width: 350px;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: row;
+            background-color: violet;
+            color: white;
+
+        }
+
+        .header .X {
+            position: relative;
+            left: 330px;
+        }
+
+        .body button {
+            background-color: violet;
+            color: white;
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h2>ADD BOOKMARK</h2>
+        <button class="add" onclick="showModal()">Add</button>
+        <div id="bookmarks" class="container"></div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="header">
+            <span>Add Bookmark</span>
+            <button class="X" onclick="hideModal()">X</button><br>
+        </div>
+        <div class="body">
+            <label for="">Website Name</label><br>
+            <input id="siteName" type="text" placeholder="Website Name"><br>
+            <label for="">Website Name</label><br>
+            <input id="siteUrl" type="text" placeholder="Website URL"><br><br>
+            <button onclick="addBookmark()">Save</button><br>
+        </div>
+
+    </div>
+
+    <script>
+        function showModal() {
+            document.getElementById("modal").style.display = "block";
+        }
+        function hideModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        function addBookmark() {
+            let name = document.getElementById("siteName").value;
+            let url = document.getElementById("siteUrl").value;
+            if (!name || !url) {
+                return;
+            }
+
+            let div = document.createElement("div");
+            div.className = "bookmark";
+            div.innerHTML = `<span>${name}</span> <button onclick="this.parentElement.remove()">X</button>`;
+            document.getElementById("bookmarks").appendChild(div);
+
+            hideModal();
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            width: 300px;
+        }
+
+        .status-active {
+            color: green;
+        }
+
+        .status-inactive {
+            color: red;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button {
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .add-btn {
+            background-color: #19c9ff;
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Danh mục</h2>
+            <button class="add-btn" onclick="showModal()">Thêm danh mục</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã</th>
+                    <th>Tên</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="list"></tbody>
+        </table>
+    </div>
+
+    <div id="modal" class="modal">
+        <h3>Thêm danh mục</h3>
+        <label>Mã: <input type="text" id="ma"></label><br>
+        <label>Tên: <input type="text" id="ten"></label><br>
+        <label>Trạng thái:
+            <select id="trangthai">
+                <option value="active">Đang hoạt động</option>
+                <option value="inactive">Ngừng hoạt động</option>
+            </select>
+        </label><br>
+        <div class="modal-buttons">
+            <button class="add-btn" onclick="them()">Thêm</button>
+            <button onclick="dong()">Hủy</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", hienThi);
+
+        function showModal() {
+            document.getElementById("modal").style.display = "block";
+        }
+
+        function dong() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        function them() {
+            let ma = document.getElementById("ma").value.trim();
+            let ten = document.getElementById("ten").value.trim();
+            let trangthai = document.getElementById("trangthai").value;
+
+            if (!ma || !ten) {
+                alert("Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
+
+            let ds = JSON.parse(localStorage.getItem("ds")) || [];
+            if (ds.some(item => item.ma === ma)) {
+                alert("Mã danh mục đã tồn tại!");
+                return;
+            }
+
+            ds.push({ ma, ten, trangthai });
+            localStorage.setItem("ds", JSON.stringify(ds));
+            hienThi();
+            dong();
+        }
+
+        function hienThi() {
+            let ds = JSON.parse(localStorage.getItem("ds")) || [];
+            let list = document.getElementById("list");
+            list.innerHTML = "";
+            ds.forEach(item => {
+                let trangThaiClass = item.trangthai === "active" ? "status-active" : "status-inactive";
+                let row = `<tr>
+                    <td>${item.ma}</td>
+                    <td>${item.ten}</td>
+                    <td class="${trangThaiClass}">${item.trangthai === "active" ? "Đang hoạt động" : "Ngừng hoạt động"}</td>
+                    <td>
+                        <button class="delete-btn" onclick="xoa('${item.ma}')">Xóa</button>
+                    </td>
+                </tr>`;
+                list.innerHTML += row;
+            });
+        }
+
+        function xoa(ma) {
+            let ds = JSON.parse(localStorage.getItem("ds")) || [];
+            ds = ds.filter(item => item.ma !== ma);
+            localStorage.setItem("ds", JSON.stringify(ds));
+            hienThi();
+        }
+    </script>
+</body>
+
+</html>

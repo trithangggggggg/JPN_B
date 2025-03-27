@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            padding: 30px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .task-input {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        input[type='text'] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .board {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .column {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .column h3 {
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .task {
+            background-color: #f9f9f9;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .task p {
+            margin: 0 0 5px 0;
+        }
+
+        .task button {
+            padding: 5px 10px;
+            font-size: 13px;
+            background-color: #28a745;
+        }
+
+        .task button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>🗂️ Quản lý công việc (Task Board)</h2>
+
+    <div class="task-input">
+        <input type="text" id="taskName" placeholder="Nhập tên công việc..." />
+        <button onclick="addJob()">Thêm</button>
+    </div>
+
+    <div class="board">
+        <div class="column" id="pendingCol">
+            <h3>🕐 Chờ xử lý</h3>
+            <div id="pendingTasks"></div>
+        </div>
+        <div class="column" id="inProgressCol">
+            <h3>🔨 Đang làm</h3>
+            <div id="inProgressTasks"></div>
+        </div>
+        <div class="column" id="doneCol">
+            <h3>✅ Hoàn thành</h3>
+            <div id="doneTasks"></div>
+        </div>
+    </div>
+
+    <script>
+        let jobs = JSON.parse(localStorage.getItem("jobs")) || [];
+
+        function addJob() {
+            let taskName = document.getElementById("taskName").value.trim();
+            if (!taskName) return; // Kiểm tra rỗng
+            let newId = jobs.length > 0 ? jobs[jobs.length - 1].id + 1 : 1;
+            let newJob = {
+                id: newId,
+                taskName: taskName,
+                status: 1
+            };
+            jobs.push(newJob);
+            localStorage.setItem("jobs", JSON.stringify(jobs));
+            document.getElementById("taskName").value = "";
+            render();
+        }
+
+        function render() {
+            let strPending = "", strDoing = "", strDone = "";
+
+            jobs.forEach((job, index) => {
+                if (job.status === 1) {
+                    strPending += `<p>${job.taskName} 
+                        <button onclick="changeStatus(${index}, 2)">➡ Chuyển tiếp</button>
+                    </p>`;
+                } else if (job.status === 2) {
+                    strDoing += `<p>${job.taskName} 
+                        <button onclick="changeStatus(${index}, 3)">✔ Hoàn thành</button>
+                        <button onclick="changeStatus(${index}, 1)">↩ Quay lại</button>
+                    </p>`;
+                } else if (job.status === 3) {
+                    strDone += `<p>${job.taskName} 
+                        <button onclick="changeStatus(${index}, 2)">🔄 Làm lại</button>
+                    </p>`;
+                }
+            });
+
+            document.getElementById("pendingTasks").innerHTML = strPending;
+            document.getElementById("inProgressTasks").innerHTML = strDoing;
+            document.getElementById("doneTasks").innerHTML = strDone;
+        }
+
+        function changeStatus(index, newStatus) {
+            jobs[index].status = newStatus;
+            localStorage.setItem("jobs", JSON.stringify(jobs));
+            render();
+        }
+
+        render();
+    </script>
+</body>
+
+</html>

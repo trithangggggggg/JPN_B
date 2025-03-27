@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập tên</title>
+    <style>
+        body {
+            background-color: rgb(234, 232, 232);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input {
+            border-radius: 4px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+        .output-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Nhập Tên Của Bạn</h2>
+        <input id="input" type="text" placeholder="Nhập tên">
+        <button onclick="save()">Lưu</button>
+    </div>
+    <div class="output-container">
+        <h2 id="output">Chào bạn, Tôi là ...</h2>
+        <button onclick="change()">Đổi tên</button>
+    </div>
+
+    <script>
+        function save() {
+            let name = document.getElementById("input").value.trim();
+            if (name === "") {
+                alert("Vui lòng nhập tên!");
+                return;
+            }
+            localStorage.setItem("name", name);
+            showname();
+        }
+
+        function showname() {
+            let nameout = localStorage.getItem("name");
+            if (nameout) {
+                document.getElementById("output").innerHTML = `Chào bạn, Tôi là ${nameout}`;
+            }
+        }
+
+        function change() {
+            localStorage.removeItem("name");
+            document.getElementById("name").value = localStorage.getItem("name");
+            document.setItem("output", name);
+        }
+
+        showname();
+    </script>
+</body>
+</html>

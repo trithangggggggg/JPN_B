@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            border-radius: 3px;
+        }
+
+        .father {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .father p,
+        button {
+            position: relative;
+            left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Bạn thích món nào nhất</h2>
+
+    </div>
+    <script>
+        let dish = JSON.parse(localStorage.getItem("dish"));
+        // if (!dish) {
+        //     dish = [
+        //         { img: "https://i.pinimg.com/474x/f4/41/e4/f441e4d163c5cc83ce64f29098ad34fa.jpg", name: "Bún bò Huế", like: 0 },
+        //         { img: "https://i.pinimg.com/736x/c7/db/c3/c7dbc368b9b2892cf0ab834494efcd62.jpg", name: "Phở Hà Nội", like: 1 },
+        //         { img: "https://i.pinimg.com/736x/64/33/1b/64331bdad81048ac5bfdf474cbf6c999.jpg", name: "Cơm tấm Sài Gòn", like: 0 }
+        //     ];
+        //     localStorage.setItem("dish", JSON.stringify(dish));
+        // }
+
+
+
+        // let dish = JSON.parse(localStorage.getItem("dish"));
+        console.log(dish);
+        function render() {
+            let str = "";
+            for (let i = 0; i < dish.length; i++) {
+                str += `<div class="father">
+                            <img src="${dish[i].img}" alt="">
+                            <h3>${dish[i].name}</h3>
+                            <p>${dish[i].like} luot thich </p>
+                            <button onclick = like(${i})>Thích +1</button>
+                        </div> `;
+            }
+            console.log(str);
+            document.getElementsByClassName("container")[0].innerHTML = str;
+
+
+        }
+        render();
+        function like(index) {
+            if (dish[index].like == 0) {
+                dish[index].like = 1;
+            } else {
+                dish[index].like = 0;
+            }
+            // dish[index].like = dish[index].like + 1;
+            localStorage.setItem("dish", JSON.stringify(dish));
+
+            render();
+        }
+    </script>
+</body>
+
+</html>

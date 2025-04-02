@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Quản Lý Tài Chính Cá Nhân</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../assets/fonts/font.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <span>📒 Tài Chính Cá Nhân K24_Rikkei</span>
+        </div>
+        <div>
+          <button class="account-btn" type="button" onclick="backAcc()">Tài khoản</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="banner">
+      <span>🎯 Kiểm soát chi tiêu thông minh</span>
+      <p>Theo dõi ngân sách và chi tiêu hàng tháng dễ dàng</p>
+    </div>
+
+    <div class="content">
+      <h1>📊 Quản Lý Tài Chính Cá Nhân</h1>
+
+      <!-- chua lam   -->
+      <div class="section">
+        <div class="month-select">
+          <label for="">📅 Chọn tháng:</label>
+          <input placeholder="Chọn tháng" type="month" value="March 2025" />
+        </div>
+    </div>
+
+
+
+      <!-- chua lam   -->
+      <div class="section">
+        <div class="budget-input">
+          <label for="">💰 Ngân sách tháng: </label>
+          <input id="budgetInput" placeholder="VD: 5.000.000 VND" type="text" />
+          <button onclick="saveBudget()">Lưu</button>
+        </div>
+      </div>
+
+
+
+
+        <!-- chua lam   -->
+      <div class="section">
+        <div class="balance">
+          <span>Số tiền chi tiêu còn lại: </span>
+          <span>0 VND</span>
+        </div>
+      </div>
+
+        <!-- chua lam   -->
+      <div class="section">
+        <h2>💼 Quản lý danh mục (theo tháng)</h2>
+
+        <div class="category-input">
+          <input placeholder="Tên danh mục" type="text" />
+          <input placeholder="Giá hạn (VND)" type="text" />
+          <button onclick="">Thêm danh mục</button>
+        </div>
+
+        <ul>
+          <li>
+            <span>Chi phí phòng - Giới hạn: 2,000,000 VND</span>
+            <div class="btn-group">
+              <button class="edit-btn">Sửa</button>
+              <button class="delete-btn">Xóa</button>
+            </div>
+          </li>
+
+          <li>
+            <span>Điện - Giới hạn: 1,000,000 VND</span>
+            <div class="btn-group">
+              <button class="edit-btn">Sửa</button>
+              <button class="delete-btn">Xóa</button>
+            </div>
+          </li>
+
+          <li>
+            <span>Nước - Giới hạn: 500,000 VND</span>
+            <div class="btn-group">
+              <button class="edit-btn">Sửa</button>
+              <button class="delete-btn">Xóa</button>
+            </div>
+          </li>
+
+          <li>
+            <span>Internet - Giới hạn: 300,000 VND</span>
+            <div class="btn-group">
+              <button class="edit-btn">Sửa</button>
+              <button class="delete-btn">Xóa</button>
+            </div>
+          </li>
+
+          <li>
+            <span>Ăn uống - Giới hạn: 2,000,000 VND</span>
+            <div class="btn-group">
+              <button class="edit-btn">Sửa</button>
+              <button class="delete-btn">Xóa</button>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+
+
+
+
+        <!-- chua lam   -->
+      <div class="section">
+        <input type="text" placeholder="  Số tiền">
+        <select name="" id="">
+          <optgroup label="Tiền chi tiêu">
+            <option value="">Tiền ăn </option>
+            <option value="">Tiền đổ xăng </option>
+            <option value="">Tiền phòng </option>
+            <option value="">Tiền mua sắm </option>
+          </optgroup>
+        </select>
+        <input type="text" placeholder="  Ghi chú">
+        <button class="btn1" onclick="">Thêm</button>
+      </div>
+
+        <!-- chua lam   -->
+      <div class="section">
+        <h2>🧾 Lịch sử giao dịch</h2>
+        <div class="search-bar">
+          <input placeholder="Tìm nội dung" type="text" name="" id="">
+          <button id="find"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button id="xapxep">Sắp xếp theo giá</button>
+        </div>
+        <ul>
+          <li>
+            <span>Chi phí phòng - đóng phí tháng 3: 2,000,000 VND</span>
+            <button class="delete-btn">Xóa</button>
+          </li>
+          <li>
+            <span>Điện - 05/03/2023: 1,000,000 VND</span>
+            <button class="delete-btn">Xóa</button>
+          </li>
+          <li>
+            <span>Nước - 06/03/2023: 500,000 VND</span>
+            <button class="delete-btn">Xóa</button>
+          </li>
+          <li>
+            <span>Internet - 07/03/2023: 300,000 VND</span>
+            <button class="delete-btn">Xóa</button>
+          </li>
+          <li>
+            <span>Ăn uống - 08/03/2023: 2,000,000 VND</span>
+            <button class="delete-btn">Xóa</button>
+          </li>
+        </ul>
+        <div class="pagination">
+          <button>Previous</button>
+          <button class="active">1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>Next</button>
+        </div>
+      </div>
+      
+        <!-- chua lam   -->
+      <div class="section">
+        <p id="thongbao">Danh mục "{tiền ăn} " đã vượt giới hạn: {1,060,000} / {1,000,000} VND</p>
+      </div>
+
+
+        <!-- chua lam   -->
+      <div class="section">
+        <h2>📆 Thống kê chi tiêu các tháng</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Tháng</th>
+              <th>Chi tiêu</th>
+              <th>Ngân sách</th>
+              <th>Trạng thái</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2023-03</td>
+              <td>5,000,000 VND</td>
+              <td>5,000,000 VND</td>
+              <td class="status-ok">Đạt</td>
+            </tr>
+            <tr>
+              <td>2023-04</td>
+              <td>6,000,000 VND</td>
+              <td>5,000,000 VND</td>
+              <td class="status-over">Vượt</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2023 Quản Lý Tài Chính Cá Nhân. by TriThangxRikkei </p>
+  </footer>
+  <div id="snackbar"></div>
+  <script src="../js/index.js"></script>
+</body>
+
+</html>

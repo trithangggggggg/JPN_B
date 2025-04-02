@@ -1,0 +1,398 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f3f4f6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+header {
+  background-color: #1d4ed8;
+  color: white;
+  padding: 16px 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo span {
+  font-weight: bold;
+}
+
+.account-btn {
+  background-color: #1f3da1;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.account-btn:hover{
+  background-color: rgb(13, 117, 235);
+}
+main {
+  margin-top: 32px;
+}
+
+.banner {
+  width: auto;
+  height: 125px;
+  text-align: center;
+  border-radius: 12px;
+  background-color: #2563eb;
+  border-radius: 6px;
+  color: white;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding-top: 30px;
+
+}
+
+.banner span {
+  font-size: 38px;
+}
+
+.content {
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* chon thang */
+.month-select {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.month-select label{
+  margin-top: 10px;
+}
+.month-select input {
+  width: 33.333%;
+  height: 50px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+/* ngan sach thang */
+.budget-input {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.budget-input label{
+  margin-top: 10px;
+}
+.budget-input input {
+  width: 33.333%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.budget-input button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.budget-input button:hover{
+  background-color: #0952c8;
+}
+
+.budget-input input:invalid {
+  border-color: #ef4444;
+}
+
+/* ngan sach con lai */
+.balance {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.balance span:first-child {
+  font-size: 18px;
+}
+
+.balance span:last-child {
+  font-size: 24px;
+  font-weight: bold;
+  color: #10b981;
+}
+
+.section {
+  background-color: #f3f4f6;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 6px rgb(158, 158, 158);
+}
+.section select{
+  border: none;
+  outline: none;
+}
+.section input{
+  border: none;
+  outline: none;
+  padding-left: 10px;
+}
+.section input,
+select{
+  width: 22%;
+  height: 42px;
+  border-radius: 6px;
+  margin-left: 20px;
+}
+
+.section .btn1{
+  height: 42px;
+  border-radius: 6px;
+  margin-left: 20px;
+  border: none;
+  outline: none;
+  width: 22%;
+  background: #6366F1;
+  color: white;
+
+}
+
+
+h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.category-input {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.category-input input:first-child {
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.category-input input:nth-child(2) {
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  margin-left: 8px;
+}
+
+.category-input button {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.button-group {
+  display: flex;
+  gap: 25px;
+}
+
+.delete-btn {
+  color: #ef4444;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.edit-btn{
+  color: #ef4444;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.search-bar {
+  display: flex;
+  margin-bottom: 16px;
+  border: none;
+  outline: none;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: auto;
+  height: 42px;
+}
+
+.search-bar input {
+  width: 15%;
+  height: 42px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.search-bar button {
+  background-color: #3b82f6;
+  color: white;
+  height: 42px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+#find{
+  background-color: #3b82f6;
+  color: white;
+  width: 5%;
+  border: 1px solid #ccc;
+
+}
+#xapxep{
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  color: rgb(15, 15, 15);
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+
+
+.pagination button {
+  /* background-color: #d1d5db; */
+  /* border: none; */
+  background-color: white;
+  border: 1px solid rgb(198, 193, 193);
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.pagination button:not(:first-child) {
+  margin-left: 8px;
+}
+
+#thongbao{
+  color: red;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  text-align: left;
+}
+
+.status-ok {
+  color: #10b981;
+}
+
+.status-over {
+  color: #ef4444;
+}
+
+
+
+
+footer {
+  background-color: #1d4ed8;
+  color: white;
+  text-align: center;
+  padding: 16px 0;
+  margin-top: 32px;
+}
+
+/*========= snackbar ==========*/
+#snackbar {
+  display: none;
+  min-width: 250px;
+  background: black;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  border-radius: 5px;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Khi hiển thị */
+#snackbar.show {
+  display: block;
+  animation: fadein 0.3s, fadeout 0.3s 2.7s;
+}
+
+/* Hiệu ứng mờ dần */
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

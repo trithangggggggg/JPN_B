@@ -1,0 +1,82 @@
+body {
+    background-color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+}
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+button {
+    width: 100%;
+    background-color: #16a34a;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #15803d;
+}
+.text-center {
+    margin-top: 10px;
+}
+.text-center a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+
+/*========= snackbar ==========*/
+#snackbar {
+    display: none;
+    min-width: 250px;
+    background: black;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Khi hiển thị */
+#snackbar.show {
+    display: block;
+    animation: fadein 0.3s, fadeout 0.3s 2.7s;
+}
+
+/* Hiệu ứng mờ dần */
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}

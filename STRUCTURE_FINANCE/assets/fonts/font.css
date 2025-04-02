@@ -1,0 +1,14 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.banner span {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+
+}

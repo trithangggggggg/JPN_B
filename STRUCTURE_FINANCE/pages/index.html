@@ -20,7 +20,10 @@
           <span>📒 Tài Chính Cá Nhân K24_Rikkei</span>
         </div>
         <div>
-          <button class="account-btn" type="button" onclick="backAcc()">Tài khoản</button>
+          <select class="account-btn" name="" id="account">
+            <option value="user">Tài Khoản <span id="currentuser"></span></option>
+            <option value="logout">Đăng xuất</option>
+          </select>
         </div>
       </div>
     </div>
@@ -35,20 +38,20 @@
     <div class="content">
       <h1>📊 Quản Lý Tài Chính Cá Nhân</h1>
 
-      <!-- chua lam   -->
+      <!-- da lam xong    -->
       <div class="section">
         <div class="month-select">
-          <label for="">📅 Chọn tháng:</label>
-          <input placeholder="Chọn tháng" type="month" value="March 2025" />
+          <label for="monthInput">📅 Chọn tháng:</label>
+          <input id="monthInput" placeholder="Chọn tháng" type="month" onchange="selectMonth()" />
         </div>
-    </div>
+      </div>
 
 
 
       <!-- chua lam   -->
       <div class="section">
         <div class="budget-input">
-          <label for="">💰 Ngân sách tháng: </label>
+          <label for="budgetInput">💰 Ngân sách tháng: </label>
           <input id="budgetInput" placeholder="VD: 5.000.000 VND" type="text" />
           <button onclick="saveBudget()">Lưu</button>
         </div>
@@ -57,73 +60,34 @@
 
 
 
-        <!-- chua lam   -->
+      <!-- so du   -->
       <div class="section">
         <div class="balance">
           <span>Số tiền chi tiêu còn lại: </span>
-          <span>0 VND</span>
+          <span id="remainingAmount">0 VND</span>
         </div>
       </div>
 
-        <!-- chua lam   -->
+      <!-- quan li danh muc   -->
       <div class="section">
         <h2>💼 Quản lý danh mục (theo tháng)</h2>
 
         <div class="category-input">
-          <input placeholder="Tên danh mục" type="text" />
-          <input placeholder="Giá hạn (VND)" type="text" />
-          <button onclick="">Thêm danh mục</button>
+          <input id="categoryName" placeholder="Tên danh mục" type="text" />
+          <input id="categoryLimit" placeholder="Giá hạn (VND)" type="text" />
+          <button onclick="addCategory()">Thêm danh mục</button>
         </div>
 
-        <ul>
-          <li>
-            <span>Chi phí phòng - Giới hạn: 2,000,000 VND</span>
-            <div class="btn-group">
-              <button class="edit-btn">Sửa</button>
-              <button class="delete-btn">Xóa</button>
-            </div>
-          </li>
+        <ul id="categoryList">
 
-          <li>
-            <span>Điện - Giới hạn: 1,000,000 VND</span>
-            <div class="btn-group">
-              <button class="edit-btn">Sửa</button>
-              <button class="delete-btn">Xóa</button>
-            </div>
-          </li>
-
-          <li>
-            <span>Nước - Giới hạn: 500,000 VND</span>
-            <div class="btn-group">
-              <button class="edit-btn">Sửa</button>
-              <button class="delete-btn">Xóa</button>
-            </div>
-          </li>
-
-          <li>
-            <span>Internet - Giới hạn: 300,000 VND</span>
-            <div class="btn-group">
-              <button class="edit-btn">Sửa</button>
-              <button class="delete-btn">Xóa</button>
-            </div>
-          </li>
-
-          <li>
-            <span>Ăn uống - Giới hạn: 2,000,000 VND</span>
-            <div class="btn-group">
-              <button class="edit-btn">Sửa</button>
-              <button class="delete-btn">Xóa</button>
-            </div>
-          </li>
         </ul>
-
       </div>
 
 
 
 
-        <!-- chua lam   -->
-      <div class="section">
+      <!-- them giao dich    -->
+      <!-- <div class="section">
         <input type="text" placeholder="  Số tiền">
         <select name="" id="">
           <optgroup label="Tiền chi tiêu">
@@ -135,54 +99,49 @@
         </select>
         <input type="text" placeholder="  Ghi chú">
         <button class="btn1" onclick="">Thêm</button>
+      </div> -->
+
+
+      <!-- Thêm giao dịch -->
+      <div class="section">
+        <h2>💸 Thêm giao dịch</h2>
+        <div class="transaction-input">
+          <input id="expenseAmount" placeholder="Số tiền (VND)" type="text" />
+          <select id="expenseCategory">
+            <option value="">Chọn danh mục</option>
+          </select>
+          <input id="expenseNote" placeholder="Ghi chú" type="text" />
+          <button class="btn1" onclick="addExpense()">Thêm</button>
+        </div>
       </div>
 
-        <!-- chua lam   -->
+
+
+      <!-- Lịch sử giao dịch -->
       <div class="section">
         <h2>🧾 Lịch sử giao dịch</h2>
         <div class="search-bar">
-          <input placeholder="Tìm nội dung" type="text" name="" id="">
+          <input id="searchInput" placeholder="Tìm nội dung" type="text" oninput="searchTransactions()" />
           <button id="find"><i class="fa-solid fa-magnifying-glass"></i></button>
-          <button id="xapxep">Sắp xếp theo giá</button>
+          <button id="sortBtn" onclick="sortTransactions()">Sắp xếp theo giá</button>
         </div>
-        <ul>
-          <li>
-            <span>Chi phí phòng - đóng phí tháng 3: 2,000,000 VND</span>
-            <button class="delete-btn">Xóa</button>
-          </li>
-          <li>
-            <span>Điện - 05/03/2023: 1,000,000 VND</span>
-            <button class="delete-btn">Xóa</button>
-          </li>
-          <li>
-            <span>Nước - 06/03/2023: 500,000 VND</span>
-            <button class="delete-btn">Xóa</button>
-          </li>
-          <li>
-            <span>Internet - 07/03/2023: 300,000 VND</span>
-            <button class="delete-btn">Xóa</button>
-          </li>
-          <li>
-            <span>Ăn uống - 08/03/2023: 2,000,000 VND</span>
-            <button class="delete-btn">Xóa</button>
-          </li>
-        </ul>
+        <ul id="transactionList"></ul>
         <div class="pagination">
-          <button>Previous</button>
-          <button class="active">1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>Next</button>
+          <button onclick="prevPage()">Previous</button>
+          <span id="pageNumbers">1/1</span>
+          <button onclick="nextPage()">Next</button>
         </div>
       </div>
-      
-        <!-- chua lam   -->
+
+
+
+      <!-- chua lam   -->
       <div class="section">
         <p id="thongbao">Danh mục "{tiền ăn} " đã vượt giới hạn: {1,060,000} / {1,000,000} VND</p>
       </div>
 
 
-        <!-- chua lam   -->
+      <!-- Thống kê -->
       <div class="section">
         <h2>📆 Thống kê chi tiêu các tháng</h2>
         <table>
@@ -194,20 +153,7 @@
               <th>Trạng thái</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>2023-03</td>
-              <td>5,000,000 VND</td>
-              <td>5,000,000 VND</td>
-              <td class="status-ok">Đạt</td>
-            </tr>
-            <tr>
-              <td>2023-04</td>
-              <td>6,000,000 VND</td>
-              <td>5,000,000 VND</td>
-              <td class="status-over">Vượt</td>
-            </tr>
-          </tbody>
+          <tbody id="statsBody"></tbody>
         </table>
       </div>
 

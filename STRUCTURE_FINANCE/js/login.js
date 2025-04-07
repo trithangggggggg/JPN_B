@@ -2,18 +2,40 @@
 // ===================== JAVASCRIP PHẦN ĐĂNG NHẬP =================================
 
 function dangNhapTuForm() {
-    let ten = document.getElementById("login-username").value;
-    let matKhau = document.getElementById("login-password").value;
+    let tenEl = document.getElementById("login-username");
+    let matKhauEl = document.getElementById("login-password");
 
-    dangNhap(ten, matKhau);
-}
+    let username = tenEl.value.trim();
+    let password = matKhauEl.value;
 
+    let usernameErrorEl = document.getElementById("usernameError");
+    let passwordErrorEl = document.getElementById("passwordError");
+    let loginFailEl = document.getElementById("loginFail");
 
-function dangNhap(username, password) {
-    let users = JSON.parse(localStorage.getItem("users")) || []; // Lấy danh sách users từ localStorage
+    // Ẩn lỗi trước
+    usernameErrorEl.style.display = "none";
+    passwordErrorEl.style.display = "none";
+    loginFailEl.style.display = "none";
+
+    let isValid = true;
+
+    if (username === "") {
+        usernameErrorEl.style.display = "block";
+        isValid = false;
+    }
+
+    if (password === "") {
+        passwordErrorEl.style.display = "block";
+        isValid = false;
+    }
+
+    if (isValid === false) {
+        return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
     let hopLe = false;
 
-    // Duyệt danh sách để kiểm tra đăng nhập
     for (let i = 0; i < users.length; i++) {
         if (users[i].username === username && users[i].password === password) {
             hopLe = true;
@@ -21,24 +43,9 @@ function dangNhap(username, password) {
         }
     }
 
-    if (hopLe == true) {
-        console.log(111);
-        
-        showSnackbar("Đăng nhập thành công!");
-        window.location = "index.html"
+    if (hopLe === true) {
+        window.location = "index.html";
     } else {
-        showSnackbar("Sai tên đăng nhập hoặc mật khẩu!");
+        loginFailEl.style.display = "block";
     }
 }
-
-// hàm hiệu ứng thông báo snackBar
-function showSnackbar(text) {
-    var sb = document.getElementById("snackbar");
-    sb.textContent = text;
-    sb.classList.add("show");
-
-    setTimeout(function() {
-        sb.classList.remove("show");
-    }, 3000);
-}
-

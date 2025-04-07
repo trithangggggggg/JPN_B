@@ -1,72 +1,84 @@
 // ===========================================================================
 // ===========JAVASCRIPT PHẦN ĐĂNG KÝ NGƯỜI DÙNG MỚI =========================
 
+
+let users = JSON.parse(localStorage.getItem("users")) || [];
+
 function registerNew() {
-    let ten = document.getElementById("username").value.trim();
-    let matKhau = document.getElementById("password").value;
-    let xacNhanMatKhau = document.getElementById("confirmPassword").value;
-    
+    let tenEl = document.getElementById("username");
+    let matKhauEl = document.getElementById("password");
+    let xacNhanEl = document.getElementById("confirmPassword");
+
+    let ten = tenEl.value.trim();
+    let matKhau = matKhauEl.value;
+    let xacNhan = xacNhanEl.value;
+
+    let tenErr = document.getElementById("usernameError");
+    let mkErr = document.getElementById("passwordError");
+    let xnErr = document.getElementById("confirmError");
+
+    // Reset lỗi
+    tenErr.style.display = "none";
+    mkErr.style.display = "none";
+    xnErr.style.display = "none";
+    tenErr.textContent = "";
+    mkErr.textContent = "";
+    xnErr.textContent = "";
+
+    let isValid = true;
+
+    // Kiểm tra tên
     if (ten === "") {
-        showSnackbar("Tên tài khoản không được để trống !");
-        return;
+        tenErr.textContent = "Tên không được để trống";
+        tenErr.style.display = "block";
+        isValid = false;
+    } else if (!ten.includes("@") || !(ten.endsWith(".com") || ten.endsWith(".vn"))) {
+        tenErr.textContent = "Email sai định dạng";
+        tenErr.style.display = "block";
+        isValid = false;
     }
 
-    if (!ten.includes("@") || !(ten.endsWith(".com") || ten.endsWith(".vn"))) {
-        showSnackbar("Email sai định dạng. Hãy nhập email có @ và kết thúc bằng .com hoặc .vn !");
-        return;
+    // Kiểm tra mật khẩu
+    if (matKhau === "") {
+        mkErr.textContent = "Mật khẩu không được để trống";
+        mkErr.style.display = "block";
+        isValid = false;
+    } else if (matKhau.length < 6) {
+        mkErr.textContent = "Mật khẩu phải có ít nhất 6 ký tự";
+        mkErr.style.display = "block";
+        isValid = false;
     }
 
-    if(xacNhanMatKhau === ""){
-        showSnackbar("Mật khẩu xác nhận không được để trống !");
-        return;
-    }
-    
-    if (matKhau !== xacNhanMatKhau) {
-        showSnackbar("Mật khẩu xác nhận không khớp !");
-        return;
-    }
-
-    if (matKhau.length < 6) {
-        showSnackbar("Mật khẩu phải có ít nhất 6 ký tự !");
-        return;
+    // Kiểm tra xác nhận mật khẩu
+    if (xacNhan === "") {
+        xnErr.textContent = "Vui lòng xác nhận mật khẩu";
+        xnErr.style.display = "block";
+        isValid = false;
+    } else if (xacNhan !== matKhau) {
+        xnErr.textContent = "Mật khẩu xác nhận không khớp";
+        xnErr.style.display = "block";
+        isValid = false;
     }
 
-    let ketQua = dangKy(ten, matKhau);
-    if (ketQua) {
-        showSnackbar("Đăng ký thành công !");
-        window.location.href = "login.html";
-       
-    } else {
-        showSnackbar("Tên đăng nhập đã tồn tại!");
-    }
-}
-
-function dangKy(username, password) {
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-    let tonTai = users.some(user => user.username === username);
+    // Kiểm tra tài khoản trùng
+    let tonTai = users.some(function(user) {
+        return user.username === ten;
+    });
 
     if (tonTai) {
-        return false;
+        tenErr.textContent = "Tài khoản đã tồn tại";
+        tenErr.style.display = "block";
+        isValid = false;
     }
 
-    users.push({ username, password });
+    if (!isValid) {
+        return;
+    }
+
+    // Thêm user mới
+    users.push({ username: ten, password: matKhau });
     localStorage.setItem("users", JSON.stringify(users));
-    return true;
+
+    alert("Đăng ký thành công!");
+    window.location.href = "login.html";
 }
-
-// hàm hiệu ứng thông báo snackBar
-function showSnackbar(text) {
-    var sb = document.getElementById("snackbar");
-    sb.textContent = text;
-    sb.classList.add("show");
-
-    setTimeout(function() {
-        sb.classList.remove("show");
-    }, 3000);
-}
-
-
-
-
-
-

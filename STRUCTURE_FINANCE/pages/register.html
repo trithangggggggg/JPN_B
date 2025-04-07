@@ -11,15 +11,20 @@
         <h2>Đăng ký tài khoản</h2>
         <form>
             <input type="text" id="username" placeholder="Tên tài khoản">
+            <p id="usernameError" style="color: red; display: none;"></p>
+
             <input type="password" id="password" placeholder="Mật khẩu">
+            <p id="passwordError" style="color: red; display: none;"></p>
+
             <input type="password" id="confirmPassword" placeholder="Xác nhận Mật khẩu">
+            <p id="confirmError" style="color: red; display: none;"></p>
+
             <button type="button" onclick="registerNew()">Đăng ký</button>
         </form>
         <div class="text-center">
             <span>Đã có tài khoản? <a href="./login.html">Đăng nhập</a></span>
         </div>
     </div>
-    <div id="snackbar"></div>
     <script src="../js/register.js"></script>
 </body>
 </html>

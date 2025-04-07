@@ -11,14 +11,19 @@
         <h2>🔒 Đăng nhập</h2>
         <form>
             <input type="text" id="login-username" placeholder="Tên đăng nhập">
+            <p id="usernameError" style="color: red; display: none;">Tên đăng nhập không được để trống</p>
+
             <input type="password" id="login-password" placeholder="Mật khẩu">
+            <p id="passwordError" style="color: red; display: none;">Mật khẩu không được để trống</p>
+
+            <p id="loginFail" style="color: red; display: none;">Sai tên đăng nhập hoặc mật khẩu!</p>
+
             <button type="button" onclick="dangNhapTuForm()">Đăng nhập</button>
         </form>
         <div class="text-center">
             <span>Chưa có tài khoản? <a href="./register.html">Đăng ký ngay</a></span>
         </div>
     </div>
-    <div id="snackbar"></div>
     <script src="../js/login.js"></script>
 </body>
 </html>

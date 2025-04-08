@@ -212,7 +212,7 @@ input {
   margin-left: 20px;
   border: none;
   outline: none;
-  width: 22%;
+  width: 18%;
   background: #6366F1;
   color: white;
 
@@ -374,9 +374,15 @@ li {
   border-radius: 4px;
   cursor: pointer;
 }
+.pagination .btn2{
+  background-color: #bec0c2;
 
-.pagination button.active {
-  background-color: #3b82f6;
+}
+.pagination button:hover{
+  background-color: rgb(59, 131, 232);
+}
+.pagination button:focus {
+  background-color: #115df6;
   color: white;
 }
 

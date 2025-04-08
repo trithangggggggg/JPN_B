@@ -21,7 +21,7 @@
         </div>
         <div>
           <select class="account-btn" name="" id="account">
-            <option value="user">Tài Khoản <span id="currentuser"></span></option>
+            <option value="user" selected>Tài Khoản <span id="currentuser"></span></option>
             <option value="logout">Đăng xuất</option>
           </select>
         </div>
@@ -38,29 +38,24 @@
     <div class="content">
       <h1>📊 Quản Lý Tài Chính Cá Nhân</h1>
 
-      <!-- da lam xong    -->
+      <!-- A - Chọn tháng -->
       <div class="section">
         <div class="month-select">
           <label for="monthInput">📅 Chọn tháng:</label>
-          <input id="monthInput" placeholder="Chọn tháng" type="month" onchange="selectMonth()" />
+          <input id="monthInput" placeholder="Chọn tháng" type="month" onchange="chooseMonth()" />
         </div>
       </div>
 
-
-
-      <!-- chua lam   -->
+      <!-- B - Nhập ngân sách -->
       <div class="section">
         <div class="budget-input">
           <label for="budgetInput">💰 Ngân sách tháng: </label>
           <input id="budgetInput" placeholder="VD: 5.000.000 VND" type="text" />
-          <button onclick="saveBudget()">Lưu</button>
+          <button onclick="storeBudget()">Lưu</button>
         </div>
       </div>
 
-
-
-
-      <!-- so du   -->
+      <!-- Số dư -->
       <div class="section">
         <div class="balance">
           <span>Số tiền chi tiêu còn lại: </span>
@@ -68,41 +63,20 @@
         </div>
       </div>
 
-      <!-- quan li danh muc   -->
+      <!-- D - Quản lý danh mục -->
       <div class="section">
         <h2>💼 Quản lý danh mục (theo tháng)</h2>
-
         <div class="category-input">
           <input id="categoryName" placeholder="Tên danh mục" type="text" />
-          <input id="categoryLimit" placeholder="Giá hạn (VND)" type="text" />
-          <button onclick="addCategory()">Thêm danh mục</button>
+          <input id="categoryLimit" placeholder="Giới hạn (VND)" type="text" />
+          <button onclick="createCategory()">Thêm danh mục</button>
         </div>
-
         <ul id="categoryList">
 
         </ul>
       </div>
 
-
-
-
-      <!-- them giao dich    -->
-      <!-- <div class="section">
-        <input type="text" placeholder="  Số tiền">
-        <select name="" id="">
-          <optgroup label="Tiền chi tiêu">
-            <option value="">Tiền ăn </option>
-            <option value="">Tiền đổ xăng </option>
-            <option value="">Tiền phòng </option>
-            <option value="">Tiền mua sắm </option>
-          </optgroup>
-        </select>
-        <input type="text" placeholder="  Ghi chú">
-        <button class="btn1" onclick="">Thêm</button>
-      </div> -->
-
-
-      <!-- Thêm giao dịch -->
+      <!-- (E1 ) Thêm giao dịch -->
       <div class="section">
         <h2>💸 Thêm giao dịch</h2>
         <div class="transaction-input">
@@ -111,37 +85,32 @@
             <option value="">Chọn danh mục</option>
           </select>
           <input id="expenseNote" placeholder="Ghi chú" type="text" />
-          <button class="btn1" onclick="addExpense()">Thêm</button>
+          <button class="btn1" onclick="createExpense()">Thêm</button>
         </div>
       </div>
 
-
-
-      <!-- Lịch sử giao dịch -->
+      <!-- (E2 ) - Lịch sử giao dịch -->
       <div class="section">
         <h2>🧾 Lịch sử giao dịch</h2>
         <div class="search-bar">
-          <input id="searchInput" placeholder="Tìm nội dung" type="text" oninput="searchTransactions()" />
+          <input id="searchInput" placeholder="Tìm nội dung" type="text" oninput="filterTransactions()" />
           <button id="find"><i class="fa-solid fa-magnifying-glass"></i></button>
-          <button id="sortBtn" onclick="sortTransactions()">Sắp xếp theo giá</button>
+          <button id="sortBtn" onclick="sortTransactionsByAmount()">Sắp xếp theo giá</button>
         </div>
         <ul id="transactionList"></ul>
         <div class="pagination">
-          <button onclick="prevPage()">Previous</button>
-          <span id="pageNumbers">1/1</span>
-          <button onclick="nextPage()">Next</button>
+          <button class="btn2" onclick="previousPage()">Previous</button>
+          <button>1</button><button>2</button><button>3</button>
+          <button class="btn2" onclick="nextPage()">Next</button>
         </div>
       </div>
 
-
-
-      <!-- chua lam   -->
+      <!-- Thông báo vượt giới hạn (chưa làm) -->
       <div class="section">
-        <p id="thongbao">Danh mục "{tiền ăn} " đã vượt giới hạn: {1,060,000} / {1,000,000} VND</p>
+        <p id="thongbao">Danh mục "{tiền ăn}" đã vượt giới hạn: {1,060,000} / {1,000,000} VND</p>
       </div>
 
-
-      <!-- Thống kê -->
+      <!-- (F)  Thống kê -->
       <div class="section">
         <h2>📆 Thống kê chi tiêu các tháng</h2>
         <table>
@@ -156,14 +125,13 @@
           <tbody id="statsBody"></tbody>
         </table>
       </div>
-
-
     </div>
   </main>
 
   <footer>
-    <p>© 2023 Quản Lý Tài Chính Cá Nhân. by TriThangxRikkei </p>
+    <p>© 2023 Quản Lý Tài Chính Cá Nhân. by TriThangxRikkei</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <div id="snackbar"></div>
   <script src="../js/index.js"></script>
 </body>

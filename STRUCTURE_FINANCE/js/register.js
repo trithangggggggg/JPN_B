@@ -75,10 +75,40 @@ function registerNew() {
         return;
     }
 
-    // Thêm user mới
-    users.push({ username: ten, password: matKhau });
+    // Tạo ID mới (tăng dần)
+    let newId = users.length > 0 ? Math.max(...users.map(user => user.id || 0)) + 1 : 1;
+
+    // Tạo đối tượng người dùng mới
+    let newUser = {
+        id: newId,
+        username: ten,
+        password: matKhau
+    };
+    users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
 
+    // In ra ID vừa tạo
+    console.log("User mới có ID là:", newId);
+
+    // Tạo dữ liệu ngân sách mặc định
+    let duLieuMacDinh = {
+        selectedMonth: '',
+        monthlyBudget: 0,
+        remainingBudget: 0,
+        categories: [],
+        transactions: []
+    };
+    localStorage.setItem(`budgetData_${ten}`, JSON.stringify(duLieuMacDinh));
+
+    // Lưu người dùng hiện tại
+    localStorage.setItem("currentUser", ten);
+
+    // Thông báo & chuyển trang
     alert("Đăng ký thành công!");
     window.location.href = "login.html";
+
+    // Xoá form
+    tenEl.value = "";
+    matKhauEl.value = "";
+    xacNhanEl.value = "";
 }

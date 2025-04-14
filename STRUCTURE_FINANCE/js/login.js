@@ -20,11 +20,13 @@ function dangNhapTuForm() {
     let isValid = true;
 
     if (username === "") {
+        usernameErrorEl.textContent = "Vui lòng nhập email"; // THAY ĐỔI: Thông báo rõ hơn
         usernameErrorEl.style.display = "block";
         isValid = false;
     }
 
     if (password === "") {
+        passwordErrorEl.textContent = "Vui lòng nhập mật khẩu"; // THAY ĐỔI: Thông báo rõ hơn
         passwordErrorEl.style.display = "block";
         isValid = false;
     }
@@ -34,18 +36,16 @@ function dangNhapTuForm() {
     }
 
     let users = JSON.parse(localStorage.getItem("users")) || [];
-    let hopLe = false;
+    let user = users.find(u => u.username === username); // THAY ĐỔI: Dùng find() thay for
 
-    for (let i = 0; i < users.length; i++) {
-        if (users[i].username === username && users[i].password === password) {
-            hopLe = true;
-            break;
-        }
-    }
-
-    if (hopLe === true) {
-        window.location = "index.html";
-    } else {
+    if (!user) {
+        loginFailEl.textContent = "Tài khoản không tồn tại"; // THAY ĐỔI: Thông báo cụ thể
         loginFailEl.style.display = "block";
+    } else if (user.password !== password) {
+        loginFailEl.textContent = "Mật khẩu không đúng"; // THAY ĐỔI: Thông báo cụ thể
+        loginFailEl.style.display = "block";
+    } else {
+        localStorage.setItem("currentUser", username);
+        window.location.href = "index.html"; // THAY ĐỔI: Dùng href cho thống nhất
     }
 }

@@ -1,13 +1,16 @@
+// ===========================================================================
+// =========== JAVASCRIPT QUẢN LÝ CHI TIÊU ====================================
+
 // Khởi tạo dữ liệu ban đầu 
 let monthlyCategories = JSON.parse(localStorage.getItem("monthlyCategories")) || [];
 let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 let monthlyReports = JSON.parse(localStorage.getItem("monthlyReports")) || [];
 
-let selectedMonth = "";//chọn tháng 
-let searchKeyword = "";//từ khóa tìm kiếm 
-let sortOrder = "asc"; // ascending (tăng dần) "desc" (giảm dần)
-let itemsPerPage = 5; // Số lượng giao dịch mỗi trang
-let currentPage = 1;//trang hiện tại 
+let selectedMonth = "";
+let searchKeyword = "";
+let sortOrder = "asc";
+let itemsPerPage = 5;
+let currentPage = 1;
 
 // Lưu dữ liệu vào localStorage
 function saveToLocalStorage() {
@@ -19,7 +22,6 @@ function saveToLocalStorage() {
 
 // Làm mới giao diện
 function refreshUI() {
-    // Debug: Hiển thị dữ liệu từ localStorage
     console.log("monthlyCategories:", JSON.parse(localStorage.getItem("monthlyCategories")));
     console.log("transactions:", JSON.parse(localStorage.getItem("transactions")));
     console.log("monthlyReports:", JSON.parse(localStorage.getItem("monthlyReports")));
@@ -28,10 +30,10 @@ function refreshUI() {
     if (currentMonthData) {
         document.getElementById("remainingAmount").textContent = `${currentMonthData.amount.toLocaleString()} VND`;
     }
-    displayCategories();
-    displayTransactions();
-    displayStats();
-    checkCategoryLimits(); // Kiểm tra giới hạn danh mục
+    displayCategories();//danh mục 
+    displayTransactions();//giao dịch 
+    displayStats();//thống kê 
+    checkCategoryLimits();// giới hạn 
 }
 
 // Khi trang tải lấy tháng đã lưu và hiển thị dữ liệu 
@@ -51,8 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
     refreshUI();
 });
 
-// ===================================CHỨC NĂNG=========================================
-
 // A - Chọn tháng
 function chooseMonth() {
     selectedMonth = document.getElementById("monthInput").value;
@@ -65,7 +65,7 @@ function chooseMonth() {
             amount: 0
         });
     }
-    currentPage = 1; // Reset về trang đầu tiên khi đổi tháng
+    currentPage = 1;
     saveToLocalStorage();
     refreshUI();
 }
@@ -125,7 +125,7 @@ function displayCategories() {
     displayCategoryOptions();
 }
 
-//D.2: Hiển thị tùy chọn danh mục
+// D.2: Hiển thị tùy chọn danh mục
 function displayCategoryOptions() {
     let expenseCategory = document.getElementById("expenseCategory");
     let currentMonthData = monthlyCategories.find(m => m.month === selectedMonth);
@@ -143,95 +143,157 @@ function createCategory() {
     let categoryName = document.getElementById("categoryName").value.trim();
     let categoryLimit = parseInt(document.getElementById("categoryLimit").value.trim());
     if (!categoryName || isNaN(categoryLimit) || categoryLimit <= 0) {
-        showNotification("Vui lòng nhập đầy đủ và hợp lệ!");
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Vui lòng nhập đầy đủ và hợp lệ!"
+        });
         return;
     }
 
     let currentMonthData = monthlyCategories.find(m => m.month === selectedMonth);
     if (!currentMonthData) {
-        showNotification("Vui lòng chọn tháng trước!");
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Vui lòng chọn tháng trước!"
+        });
         return;
     }
 
-    let newId = currentMonthData.categories.length > 0
-        ? Math.max(...currentMonthData.categories.map(c => c.id)) + 1
-        : 1;
+    let maxId = 0;
+    for (let i = 0; i < currentMonthData.categories.length; i++) {
+        let id = currentMonthData.categories[i].id;
+        if (id > maxId) {
+            maxId = id;
+        }
+    }
+    let newId = maxId + 1;
 
-    currentMonthData.categories.push({ id: newId, name: categoryName, budget: categoryLimit });
+
+    currentMonthData.categories.push({
+        id: newId,
+        name: categoryName,
+        budget: categoryLimit
+    });
     saveToLocalStorage();
     displayCategories();
     document.getElementById("categoryName").value = "";
     document.getElementById("categoryLimit").value = "";
-    showNotification("Đã thêm danh mục thành công!");
+    Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Đã thêm danh mục thành công!",
+        showConfirmButton: false,
+        timer: 1500
+    });
 }
 
-//D4: Sửa danh mục
+// D.4: Sửa danh mục (ĐÃ SỬA)
 function updateCategory(index) {
     let currentMonthData = monthlyCategories.find(m => m.month === selectedMonth);
     if (!currentMonthData) return;
 
-    let tenMoi = prompt("Nhập tên danh mục mới:", currentMonthData.categories[index].name);
-    let gioiHanMoi = prompt("Nhập giới hạn mới (VND):", currentMonthData.categories[index].budget);
-    if (tenMoi && gioiHanMoi) {
-        let giaTriGioiHan = parseInt(gioiHanMoi);
-        if (isNaN(giaTriGioiHan) || giaTriGioiHan <= 0) {
-            showNotification("Giới hạn không hợp lệ!");
-            return;
-        }
-        currentMonthData.categories[index] = {
-            id: currentMonthData.categories[index].id,
-            name: tenMoi.trim(),
-            budget: giaTriGioiHan
-        };
-        saveToLocalStorage();
-        displayCategories();
-        showNotification("Đã sửa danh mục thành công!");
-    }
-}
+    let danhMuc = currentMonthData.categories[index];
 
-//D5: Xóa danh mục
-function removeCategory(index) {
-    if (confirm("Bạn có chắc muốn xóa danh mục này?")) {
-        let currentMonthData = monthlyCategories.find(m => m.month === selectedMonth);
-        if (currentMonthData) {
-            // Lấy category ID trước khi xóa
-            const categoryId = currentMonthData.categories[index].id;
+    Swal.fire({
+        title: 'Sửa danh mục',
+        html:
+            `<input id="tenMoi" class="swal2-input" placeholder="Tên danh mục" value="${danhMuc.name}">` +
+            `<input id="gioiHanMoi" class="swal2-input" placeholder="Giới hạn (VND)" type="number" value="${danhMuc.budget}">`,
+        focusConfirm: false,
+        showCancelButton: true,
+        confirmButtonText: 'Lưu',
+        cancelButtonText: 'Hủy',
+        preConfirm: () => {
+            const tenMoi = document.getElementById('tenMoi').value.trim();
+            const gioiHanMoi = document.getElementById('gioiHanMoi').value;
 
-            // Xóa tất cả giao dịch liên quan đến danh mục này
-            transactions = transactions.filter(t =>
-                !(t.month === selectedMonth && t.categoryId === categoryId)
-            );
-
-            // Cập nhật báo cáo tháng
-            let report = monthlyReports.find(r => r.month === selectedMonth && r.userId === 1);
-            if (report) {
-                // Tính tổng chi tiêu của danh mục này
-                const categoryDetails = report.details.filter(d => d.categoryId === categoryId);
-                const totalCategoryAmount = categoryDetails.reduce((sum, d) => sum + d.amount, 0);
-
-                // Cập nhật tổng chi tiêu trong báo cáo
-                report.totalAmount -= totalCategoryAmount;
-
-                // Xóa chi tiết của danh mục này
-                report.details = report.details.filter(d => d.categoryId !== categoryId);
+            if (!tenMoi || !gioiHanMoi) {
+                Swal.showValidationMessage('Vui lòng nhập đầy đủ thông tin');
+                return false;
             }
 
-            // Xóa danh mục
-            currentMonthData.categories.splice(index, 1);
+            const soTien = parseInt(gioiHanMoi);
+            if (isNaN(soTien) || soTien <= 0) {
+                Swal.showValidationMessage('Giới hạn không hợp lệ!');
+                return false;
+            }
 
+            return { ten: tenMoi, tien: soTien };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const { ten, tien } = result.value;
+
+            currentMonthData.categories[index] = {
+                id: danhMuc.id,
+                name: ten,
+                budget: tien
+            };
+            Swal.fire("Đã lưu!", "Danh mục đã được cập nhật.", "success");
             saveToLocalStorage();
             displayCategories();
-            refreshUI();
-            showNotification("Đã xóa danh mục và các giao dịch liên quan thành công!");
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Đã sửa danh mục thành công!",
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
-    }
+    });
+}
+
+// D.5: Xóa danh mục (ĐÃ SỬA)
+function removeCategory(index) {
+    let currentMonthData = monthlyCategories.find(m => m.month === selectedMonth);
+    if (!currentMonthData) return;
+
+    const categoryName = currentMonthData.categories[index].name;
+
+    Swal.fire({
+        title: "Bạn có chắc?",
+        text: `Xóa danh mục "${categoryName}" sẽ xóa toàn bộ giao dịch về "${categoryName}". Bạn có chắc chắn không?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Có, xóa ngay!",
+        cancelButtonText: "Hủy",
+        reverseButtons: true
+    }).then((result) => {
+        if (!result.isConfirmed) return;
+
+        const categoryId = currentMonthData.categories[index].id;
+
+        transactions = transactions.filter(t =>
+            !(t.month === selectedMonth && t.categoryId === categoryId)
+        );
+
+        let report = monthlyReports.find(r => r.month === selectedMonth && r.userId === 1);
+        if (report) {
+            const categoryDetails = report.details.filter(d => d.categoryId === categoryId);
+            const totalCategoryAmount = categoryDetails.reduce((sum, d) => sum + d.amount, 0);
+            report.totalAmount -= totalCategoryAmount;
+            report.details = report.details.filter(d => d.categoryId !== categoryId);
+        }
+
+        currentMonthData.categories.splice(index, 1);
+        Swal.fire("Đã xóa!", "Danh mục đã bị xóa thành công.", "success");
+
+        saveToLocalStorage();
+        displayCategories();
+        refreshUI();
+        showNotification("Đã xóa danh mục và các giao dịch liên quan thành công!");
+    });
 }
 
 // E - THÊM VÀ QUẢN LÝ GIAO DỊCH
-//E1 - Thêm giao dịch 
+// E.1 - Thêm giao dịch 
 function createExpense() {
     let rawAmount = document.getElementById("expenseAmount").value;
-    let amount = parseInt(rawAmount.replace(/[^\d]/g, '')); // Lọc ra chỉ số
+    let amount = parseInt(rawAmount.replace(/[^\d]/g, ''));
 
     let categoryId = parseInt(document.getElementById("expenseCategory").value);
     let note = document.getElementById("expenseNote").value.trim();
@@ -257,24 +319,20 @@ function createExpense() {
         return;
     }
 
-    // Tìm category để lấy tên
     let category = currentMonthData.categories.find(c => c.id === categoryId);
     if (!category) {
         showNotification("Danh mục không hợp lệ!");
         return;
     }
 
-    // Lấy ID mới dựa vào giao dịch hiện có
     let newId = transactions.length > 0 ? Math.max(...transactions.map(t => t.id)) + 1 : 1;
 
-    // Format date theo định dạng "YYYY-MM-DD"
     let today = new Date();
     let yyyy = today.getFullYear();
     let mm = String(today.getMonth() + 1).padStart(2, '0');
     let dd = String(today.getDate()).padStart(2, '0');
     let formattedDate = `${yyyy}-${mm}-${dd}`;
 
-    // Tạo giao dịch mới và thêm thuộc tính month
     let newTransaction = {
         id: newId,
         date: formattedDate,
@@ -305,7 +363,6 @@ function createExpense() {
     });
 
     report.totalAmount += amount;
-
     currentMonthData.amount -= amount;
 
     saveToLocalStorage();
@@ -315,13 +372,15 @@ function createExpense() {
     document.getElementById("expenseCategory").value = "";
     document.getElementById("expenseNote").value = "";
 
-    showNotification("Đã thêm giao dịch thành công!");
-
-    // Kiểm tra giới hạn danh mục sau khi thêm giao dịch
+    Swal.fire({
+        title: "Đã thêm",
+        text: "Đã thêm giao dịch thành công!",
+        icon: "success"
+    });
     checkCategoryLimits();
 }
 
-// E2 - Hiển thị giao dịch
+// E.2 - Hiển thị giao dịch
 function displayTransactions() {
     let transactionList = document.getElementById("transactionList");
 
@@ -330,60 +389,43 @@ function displayTransactions() {
         return;
     }
 
-    // Debug: Kiểm tra giao dịch trước khi hiển thị
-    console.log("Transactions before filtering:", transactions);
-    console.log("Selected month:", selectedMonth);
+    // console.log("Transactions before filtering:", transactions);
+    // console.log("Selected month:", selectedMonth);
 
-    // Lọc các giao dịch theo tháng và từ khóa tìm kiếm
     searchKeyword = document.getElementById("searchInput").value.toLowerCase();
 
-    // Chỉ lấy các giao dịch trong tháng đã chọn
     let currentMonthData = monthlyCategories.find(m => m.month === selectedMonth);
     let monthPrefix = selectedMonth.split("-")[0] + "-" + selectedMonth.split("-")[1];
 
     let filteredTransactions = transactions.filter(t => {
-        // Ưu tiên kiểm tra thuộc tính month trước
         if (t.month === selectedMonth) return true;
-
-        // Nếu không có month, kiểm tra date
         if (t.date && t.date.startsWith(monthPrefix)) return true;
-
         return false;
     });
 
-    console.log("Filtered by month:", filteredTransactions); // check 
+    // console.log("Filtered by month:", filteredTransactions);
 
-    // Lọc tiếp theo từ khóa tìm kiếm nếu có
     if (searchKeyword) {
         filteredTransactions = filteredTransactions.filter(t => {
-            // Tìm kiếm trong description
             const descMatch = t.description && t.description.toLowerCase().includes(searchKeyword);
-
-            // Tìm kiếm tên danh mục
             let categoryName = "";
             if (currentMonthData) {
                 const category = currentMonthData.categories.find(c => c.id === t.categoryId);
                 if (category) categoryName = category.name.toLowerCase();
             }
-
             return descMatch || categoryName.includes(searchKeyword);
         });
     }
 
-    console.log("Filtered by keyword:", filteredTransactions);
-
-    // Sắp xếp theo số tiền
     if (sortOrder === "asc") {
         filteredTransactions.sort((a, b) => a.amount - b.amount);
     } else {
-        filteredTransactions.sort((a, b) => b.amount - a.amount);
+        filteredTransactions.sort((a, b) => b.amount - b.amount);
     }
-
-    // Tính toán phân trang
 
     let totalPages = Math.ceil(filteredTransactions.length / itemsPerPage);
     if (totalPages === 0) {
-        totalPages = 1; // Đảm bảo luôn có ít nhất 1 trang
+        totalPages = 1;
     }
 
     if (currentPage > totalPages) {
@@ -394,16 +436,12 @@ function displayTransactions() {
     const endIndex = Math.min(startIndex + itemsPerPage, filteredTransactions.length);
     const paginatedTransactions = filteredTransactions.slice(startIndex, endIndex);
 
-    console.log("111:", paginatedTransactions);
-
-    // Hiển thị giao dịch
     if (paginatedTransactions.length === 0) {
         transactionList.innerHTML = "<li class='no-transaction'>Không có giao dịch nào</li>";
     } else {
         let html = "";
 
         paginatedTransactions.forEach(expense => {
-            // Tìm tên danh mục từ ID
             let categoryName = "Không xác định";
             if (currentMonthData) {
                 const category = currentMonthData.categories.find(c => c.id === expense.categoryId);
@@ -421,14 +459,12 @@ function displayTransactions() {
         transactionList.innerHTML = html;
     }
 
-    // Cập nhật nút phân trang
     updatePagination(totalPages);
 }
 
 // Cập nhật nút phân trang
 function updatePagination(totalPages) {
     const pagination = document.querySelector(".pagination");
-
 
     let paginationHTML = `
         <button class="btn2" onclick="previousPage()" ${currentPage === 1 ? 'disabled' : ''}>Previous</button>
@@ -442,37 +478,37 @@ function updatePagination(totalPages) {
         <button class="btn2" onclick="nextPage()" ${currentPage === totalPages ? 'disabled' : ''}>Next</button>
     `;
 
-
     pagination.innerHTML = paginationHTML;
 }
 
-//E3 - Xóa giao dịch
+// E.3 - Xóa giao dịch
 function removeExpense(id) {
+    let currentMonthData = monthlyCategories.find(m => m.month === selectedMonth);
+    if (!currentMonthData) return;
+
+    let expense = transactions.find(t => t.id === id);
+    if (!expense) return;
+
+    let category = currentMonthData.categories.find(c => c.id === expense.categoryId);
+    let categoryName = category ? category.name : "Không xác định";
+
     Swal.fire({
-        title: "Are you sure?",
-        text: "Bạn có chắc muốn xóa giao dịch này ?",
+        title: "Bạn có chắc?",
+        text: `Bạn có muốn xóa giao dịch "${expense.description}" (${expense.amount.toLocaleString()} VND) không?`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Có, hãy xóa nó !"
+        confirmButtonText: "Có, xóa ngay!",
+        cancelButtonText: "Hủy",
+        reverseButtons: true
     }).then((result) => {
         if (!result.isConfirmed) {
             return;
         }
 
-        // === Bắt đầu xóa khi người dùng xác nhận ===
-
-        let currentMonthData = monthlyCategories.find(m => m.month === selectedMonth);
-        if (!currentMonthData) return;
-
-        let expense = transactions.find(t => t.id === id);
-        if (!expense) return;
-
-        // Xóa giao dịch
         transactions = transactions.filter(t => t.id !== id);
 
-        // Cập nhật báo cáo tháng
         let report = monthlyReports.find(r => r.month === selectedMonth && r.userId === 1);
         if (report) {
             report.details = report.details.filter(d =>
@@ -481,36 +517,34 @@ function removeExpense(id) {
             report.totalAmount -= expense.amount;
         }
 
-        // Cập nhật số dư
         currentMonthData.amount += expense.amount;
 
         saveToLocalStorage();
         refreshUI();
         showNotification("Đã xóa giao dịch thành công!");
 
-        // Thông báo thành công bằng SweetAlert
         Swal.fire({
-            title: "Deleted !",
-            text: "Giao dịch đã được xóa.",
+            title: "Đã xóa!",
+            text: "Giao dịch đã được xóa thành công.",
             icon: "success"
         });
     });
 }
 
-//E4 - Tìm kiếm giao dịch
+// E.4 - Tìm kiếm giao dịch
 function filterTransactions() {
-    currentPage = 1; // Reset về trang đầu tiên khi tìm kiếm
+    currentPage = 1;
     displayTransactions();
 }
 
-//E5 - Sắp xếp giao dịch
+// E.5 - Sắp xếp giao dịch
 function sortTransactionsByAmount() {
     sortOrder = sortOrder === "asc" ? "desc" : "asc";
     document.getElementById("sortBtn").textContent = sortOrder === "asc" ? "Sắp xếp theo giá ↑" : "Sắp xếp theo giá ↓";
     displayTransactions();
 }
 
-// Phân trang - ĐÃ SỬA
+// Phân trang
 function previousPage() {
     if (currentPage > 1) {
         currentPage--;
@@ -519,7 +553,6 @@ function previousPage() {
 }
 
 function nextPage() {
-    // Tính tổng số trang dựa trên số giao dịch đã lọc
     let filteredTransactions = transactions.filter(t => {
         if (t.month === selectedMonth) return true;
 
@@ -552,7 +585,6 @@ function nextPage() {
 }
 
 function goToPage(page) {
-    // Tính tổng số trang như trong nextPage()
     let filteredTransactions = transactions.filter(t => {
         if (t.month === selectedMonth) return true;
 
@@ -597,8 +629,6 @@ function checkCategoryLimits() {
     const report = monthlyReports.find(r => r.month === selectedMonth && r.userId === 1);
     if (!report) return;
 
-
-    // Tính tổng chi tiêu cho mỗi danh mục
     for (let i = 0; i < currentMonthData.categories.length; i++) {
         const category = currentMonthData.categories[i];
         let categoryExpenses = 0;
@@ -613,7 +643,7 @@ function checkCategoryLimits() {
             tb.innerHTML = `Danh mục "${category.name}" đã vượt giới hạn: ${categoryExpenses.toLocaleString()} / ${category.budget.toLocaleString()} VND`;
             tb.style.display = "block";
             tb.style.color = "red";
-            return; // Hiển thị cảnh báo đầu tiên tìm thấy
+            return;
         }
     }
 }
@@ -625,7 +655,6 @@ function displayStats() {
         let report = monthlyReports.find(r => r.month === data.month && r.userId === 1);
         let totalExpenses = report ? report.totalAmount : 0;
 
-        // Ngân sách ban đầu: Lấy tổng số tiền hiện tại + tổng chi tiêu
         let initialBudget = data.amount + totalExpenses;
 
         return `
@@ -665,10 +694,7 @@ function logout() {
     });
 }
 
-
-
-
-// Reset dữ liệu (để kiểm tra)
+// Reset dữ liệu
 function resetData() {
     if (confirm("Bạn có chắc muốn xóa tất cả dữ liệu không?")) {
         localStorage.removeItem("monthlyCategories");
@@ -676,17 +702,15 @@ function resetData() {
         localStorage.removeItem("monthlyReports");
         localStorage.removeItem("selectedMonth");
 
-        // Khởi tạo lại các biến
         monthlyCategories = [];
         transactions = [];
         monthlyReports = [];
         selectedMonth = "";
 
-        // Reset UI
         document.getElementById("monthInput").value = "";
         document.getElementById("remainingAmount").textContent = "0 VND";
 
-        location.reload(); // Tải lại trang
+        location.reload();
         showNotification("Đã xóa tất cả dữ liệu thành công!");
     }
 }

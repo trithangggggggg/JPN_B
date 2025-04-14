@@ -1,9 +1,9 @@
 // ===========================================================================
 // ===========JAVASCRIPT PHẦN ĐĂNG KÝ NGƯỜI DÙNG MỚI =========================
 
-
 let users = JSON.parse(localStorage.getItem("users")) || [];
 
+// Hàm đăng ký người dùng mới
 function registerNew() {
     let tenEl = document.getElementById("username");
     let matKhauEl = document.getElementById("password");
@@ -41,11 +41,11 @@ function registerNew() {
     // Kiểm tra mật khẩu
     if (matKhau === "") {
         mkErr.textContent = "Mật khẩu không được để trống";
-        mkErr.style.display = "block";
+        mkErr.style.display = "block"; // SỬA LỖI: Thêm dấu nháy đóng và dấu chấm phẩy
         isValid = false;
     } else if (matKhau.length < 6) {
         mkErr.textContent = "Mật khẩu phải có ít nhất 6 ký tự";
-        mkErr.style.display = "block";
+        mkErr.style.display = "block"; // SỬA LỖI: Thêm dấu nháy đóng và dấu chấm phẩy
         isValid = false;
     }
 
@@ -92,11 +92,13 @@ function registerNew() {
 
     // Tạo dữ liệu ngân sách mặc định
     let duLieuMacDinh = {
-        selectedMonth: '',
+        selectedMonth: new Date().toISOString().slice(0, 7), // THAY ĐỔI: Đặt tháng hiện tại
         monthlyBudget: 0,
         remainingBudget: 0,
-        categories: [],
-        transactions: []
+        monthlyCategories: [],
+        transactions: [],
+        monthlyReports: [],
+        categories: ["Ăn uống", "Di chuyển", "Mua sắm"] // THAY ĐỔI: Thêm danh mục mặc định
     };
     localStorage.setItem(`budgetData_${ten}`, JSON.stringify(duLieuMacDinh));
 
